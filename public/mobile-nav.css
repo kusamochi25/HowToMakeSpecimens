@@ -1,0 +1,43 @@
+.nav-label {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .site-header {
+    gap: 18px;
+  }
+
+  .site-header nav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .nav-label {
+    display: block;
+    color: var(--muted);
+    font-size: 0.73rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .site-header nav a {
+    display: flex;
+    align-items: center;
+    min-height: 45px;
+    padding: 8px 13px;
+    border: 1px solid var(--line);
+    background: rgba(255, 253, 246, 0.78);
+    text-decoration: none;
+  }
+
+  .site-header nav a:hover,
+  .site-header nav a:focus-visible,
+  .site-header nav a[aria-current="page"] {
+    color: white;
+    background: var(--leaf);
+    border-color: var(--leaf);
+    text-decoration: none;
+  }
+}
