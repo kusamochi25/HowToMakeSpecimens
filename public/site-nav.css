@@ -24,6 +24,21 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.guide-card h3 {
+  overflow-wrap: normal;
+  text-wrap: balance;
+}
+
+.guide-card > p:not(.card-number) {
+  max-width: 31ch;
+}
+
+.guide-card a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
 .home-card {
   background: #e3ece0;
 }
@@ -250,6 +265,17 @@
   border-top: 5px solid var(--leaf);
 }
 
+@media (max-width: 900px) {
+  .guide-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-card {
+    min-height: 0;
+    padding: 26px;
+  }
+}
+
 @media (max-width: 720px) {
   .site-header:not(.home-header) {
     flex-direction: row;
@@ -267,6 +293,15 @@
   .hero {
     min-height: 340px;
     margin-bottom: 58px;
+  }
+
+  .guide-card h3 {
+    font-size: clamp(1.65rem, 8vw, 2.05rem);
+  }
+
+  .guide-card > p:not(.card-number) {
+    max-width: 28ch;
+    font-size: 0.98rem;
   }
 
   .site-header .global-nav {
