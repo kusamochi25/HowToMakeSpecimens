@@ -265,6 +265,55 @@
   border-top: 5px solid var(--leaf);
 }
 
+.home-flow {
+  display: grid;
+  gap: 11px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-flow li {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 13px;
+  padding: 17px;
+  background: rgba(255, 253, 246, 0.72);
+  border: 1px solid rgba(83, 105, 75, 0.2);
+}
+
+.home-flow-number {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  color: white;
+  background: var(--leaf);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.home-flow h3 {
+  margin: -2px 0 2px;
+  font-size: 1.08rem;
+}
+
+.home-flow p {
+  margin: 0;
+  font-size: 0.89rem;
+  line-height: 1.7;
+}
+
+.home-flow a,
+.method-grid a {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--leaf);
+  font-size: 0.86rem;
+  font-weight: 800;
+  text-underline-offset: 4px;
+}
+
 @media (max-width: 900px) {
   .guide-grid {
     grid-template-columns: 1fr;
@@ -354,6 +403,10 @@
 
   .home-preparation {
     padding: 22px;
+  }
+
+  .home-flow li {
+    padding: 15px;
   }
 
   .footer-nav {
