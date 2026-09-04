@@ -3,6 +3,36 @@
   gap: 5px 13px;
 }
 
+.guide-index-link {
+  padding: 7px 12px;
+  color: var(--leaf);
+  border: 1px solid rgba(83, 105, 75, 0.38);
+  background: rgba(255, 253, 246, 0.66);
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.guide-index-link:hover,
+.guide-index-link:focus-visible {
+  color: white;
+  border-color: var(--leaf);
+  background: var(--leaf);
+}
+
+.guide-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.home-card {
+  background: #e3ece0;
+}
+
+.hero {
+  min-height: 400px;
+  margin-bottom: 70px;
+}
+
 .global-nav .resource-link,
 .footer-nav .resource-link {
   padding: 2px 8px;
@@ -50,6 +80,18 @@
   text-underline-offset: 4px;
 }
 
+.scope-inline {
+  max-width: 640px;
+  margin: -12px 0 30px;
+  color: var(--muted);
+  font-size: 0.83rem;
+  line-height: 1.65;
+}
+
+.guide-intro .scope-inline {
+  margin: 14px 0 0;
+}
+
 .footer-nav {
   margin-top: 9px;
   justify-content: flex-start;
@@ -62,7 +104,171 @@
   font-size: 0.78rem;
 }
 
+.site-footer .site-scope {
+  max-width: 680px;
+  margin: 11px 0 0;
+  font-size: 0.73rem;
+  line-height: 1.6;
+}
+
+.start-choice {
+  margin: 0 0 60px;
+  padding: clamp(27px, 5vw, 50px);
+  border-top: 8px solid var(--sun);
+}
+
+.start-choice-home {
+  margin-bottom: 96px;
+}
+
+.start-choice-heading {
+  max-width: 650px;
+  margin-bottom: 23px;
+}
+
+.start-choice-heading h2 {
+  font-size: clamp(1.75rem, 3.8vw, 2.65rem);
+}
+
+.start-choice-heading > p:last-child {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.start-path-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.start-path {
+  padding: 23px;
+  border: 1px solid rgba(48, 68, 48, 0.22);
+  box-shadow: 5px 6px 0 rgba(76, 91, 64, 0.1);
+}
+
+.start-path.workshop-path {
+  background: #f7e9b8;
+}
+
+.start-path.home-path {
+  background: #dbe6dd;
+}
+
+.start-path-label {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.start-path h3 {
+  font-size: clamp(1.3rem, 2.4vw, 1.65rem);
+}
+
+.start-path > p:not(.start-path-label) {
+  margin: 10px 0 0;
+  font-size: 0.91rem;
+  line-height: 1.72;
+}
+
+.start-link,
+.home-softening-details__links a {
+  color: var(--leaf);
+  font-weight: 800;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.start-link {
+  display: inline-block;
+  margin-top: 18px;
+}
+
+.home-softening-details {
+  margin-top: 16px;
+  border-top: 1px solid rgba(83, 105, 75, 0.32);
+}
+
+.home-softening-details summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  color: var(--leaf);
+  cursor: pointer;
+  font-weight: 800;
+  list-style: none;
+}
+
+.home-softening-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.home-softening-details summary::after {
+  content: "開く ＋";
+  flex: none;
+  font-size: 0.8rem;
+}
+
+.home-softening-details[open] summary::after {
+  content: "閉じる −";
+}
+
+.home-softening-details__body {
+  padding: 0 0 4px;
+}
+
+.home-softening-details__body p {
+  margin: 0 0 12px;
+  font-size: 0.87rem;
+  line-height: 1.72;
+}
+
+.home-softening-details__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 16px;
+  padding-bottom: 11px;
+  font-size: 0.85rem;
+}
+
+.content-section .flow-step {
+  margin: 0 0 4px;
+  color: var(--clay);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+}
+
+.home-preparation {
+  padding: 29px;
+  background: rgba(255, 253, 246, 0.62);
+  border-top: 5px solid var(--leaf);
+}
+
 @media (max-width: 720px) {
+  .site-header:not(.home-header) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .site-header .guide-index-link {
+    flex: none;
+    padding: 7px 10px;
+    font-size: 0.78rem;
+  }
+
+  .hero {
+    min-height: 340px;
+    margin-bottom: 58px;
+  }
+
   .site-header .global-nav {
     gap: 7px;
   }
@@ -90,6 +296,29 @@
     grid-template-columns: 1fr;
     gap: 17px;
     margin-bottom: 58px;
+  }
+
+  .start-choice,
+  .start-choice-home {
+    margin-bottom: 58px;
+    padding: 22px;
+  }
+
+  .start-path-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .start-path {
+    padding: 20px;
+  }
+
+  .home-softening-details__links {
+    display: grid;
+    gap: 7px;
+  }
+
+  .home-preparation {
+    padding: 22px;
   }
 
   .footer-nav {
