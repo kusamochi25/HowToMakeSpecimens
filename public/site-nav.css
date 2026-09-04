@@ -31,6 +31,10 @@
   gap: 42px;
 }
 
+.guide-intro.softening {
+  border-top: 8px solid var(--clay);
+}
+
 .home-reference > div:last-child p {
   margin: 0 0 12px;
 }
