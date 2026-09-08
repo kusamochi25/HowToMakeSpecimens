@@ -1,0 +1,89 @@
+.contact-intro {
+  border-top: 8px solid var(--blue);
+  padding: clamp(24px, 5vw, 48px);
+}
+
+.contact-intro h1 {
+  font-size: clamp(1.75rem, 6vw, 3rem);
+}
+
+.contact-panel {
+  padding: clamp(20px, 5vw, 48px);
+  background-image: none;
+}
+
+.contact-panel h2 {
+  font-size: 1.5rem;
+}
+
+.contact-status {
+  padding: 14px 16px;
+  background: var(--ground);
+  border-left: 4px solid var(--blue);
+}
+
+.field-guide, .field-help, .optional-label {
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.contact-field {
+  margin: 26px 0;
+}
+
+.contact-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.required-label, .optional-label {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: .875rem;
+}
+
+.required-label {
+  padding: 0 6px;
+  background: var(--ground);
+}
+
+.field-help {
+  margin: 0 0 8px;
+}
+
+.contact-field input, .contact-field textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid var(--muted);
+  border-radius: 3px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+}
+
+.contact-field textarea {
+  resize: vertical;
+}
+
+.contact-field input:focus-visible, .contact-field textarea:focus-visible {
+  outline: 2px solid var(--leaf);
+  outline-offset: 3px;
+}
+
+.contact-submit {
+  min-height: 48px;
+  max-width: 100%;
+  font: inherit;
+  font-weight: 700;
+}
+
+.contact-submit:disabled {
+  color: var(--muted);
+  background: var(--ground);
+  border-color: var(--line);
+  cursor: not-allowed;
+}
