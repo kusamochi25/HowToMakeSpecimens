@@ -409,6 +409,34 @@
   font-size: .875rem;
 }
 
+.beginner-question {
+  margin: 16px 0;
+  padding: 0 16px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.beginner-question summary {
+  padding: 14px 0;
+  min-height: 48px;
+  cursor: pointer;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.beginner-question summary:focus-visible {
+  outline: 2px solid var(--leaf);
+  outline-offset: 3px;
+}
+
+.beginner-question[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.beginner-question p {
+  margin: 12px 0 16px;
+}
+
 .title-phrase {
   display: inline-block;
   white-space: nowrap;
