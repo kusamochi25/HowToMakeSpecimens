@@ -11,7 +11,7 @@ export async function renderSite() {
   for (const page of pages) {
     output.set(`${page.slug}.html`, layout(page, await readFile(resolve(root, 'content/guides', `${page.slug}.html`), 'utf8')));
   }
-  const styles = await Promise.all(['styles', 'navigation', 'contact', 'home'].map(name => readFile(resolve(root, 'src/styles', `${name}.css`), 'utf8')));
+  const styles = await Promise.all(['styles', 'navigation', 'contact', 'home', 'beginner'].map(name => readFile(resolve(root, 'src/styles', `${name}.css`), 'utf8')));
   output.set('styles.css', '/* Generated. Edit src/styles/*.css. */\n' + styles.join('\n'));
   output.set('site.js', await readFile(resolve(root, 'src/browser/site.js'), 'utf8'));
   output.set('search.js', await readFile(resolve(root, 'src/browser/search.mjs'), 'utf8'));

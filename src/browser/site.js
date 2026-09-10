@@ -43,6 +43,28 @@ function revealAnchor() {
 window.addEventListener('hashchange', revealAnchor);
 revealAnchor();
 
+// A sidebar on wide screens; a native, initially collapsed contents list on phones.
+const lessonIndex = document.querySelector('#lesson-index');
+if (lessonIndex) {
+  const wideLesson = window.matchMedia('(min-width: 1100px)');
+  const syncLessonIndex = () => { lessonIndex.open = wideLesson.matches; };
+  syncLessonIndex();
+  wideLesson.addEventListener('change', syncLessonIndex);
+  lessonIndex.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link || wideLesson.matches) return;
+    const target = document.getElementById(link.hash.slice(1));
+    if (!target) return;
+    lessonIndex.open = false;
+    // Move keyboard focus out of the collapsed contents without changing browser history.
+    const heading = target.querySelector('h2');
+    if (heading) {
+      heading.setAttribute('tabindex', '-1');
+      heading.focus({ preventScroll: true });
+    }
+  });
+}
+
 const dialog = document.querySelector('#site-search');
 const trigger = document.querySelector('[data-search-open]');
 if (dialog && trigger && typeof dialog.showModal === 'function') {

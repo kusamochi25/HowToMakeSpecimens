@@ -145,3 +145,22 @@ test('mobile menu works as native disclosure and search is progressively enhance
   assert.match(site.get('site.js'), /textContent = result.title/);
   assert.doesNotMatch(site.get('site.js'), /innerHTML|localStorage|sessionStorage/);
 });
+
+test('beginner lesson pairs instructions and photos, with one native contents and a return path', () => {
+  const html = page('beginner');
+  assert.match(html, /<body class="article-page beginner-page">/);
+  assert.match(html, /<details class="lesson-index" id="lesson-index">/);
+  const contents = html.match(/<details class="lesson-index"[\s\S]*?<\/details>/)[0];
+  for (const step of workflow) {
+    assert.match(contents, new RegExp('href="#' + step.id + '"'));
+    assert.ok(contents.includes(step.label));
+  }
+  assert.equal((html.match(/class="lesson-chapter"/g) || []).length, 5);
+  assert.equal((html.match(/class="lesson-media-row"/g) || []).length, 6);
+  assert.equal((html.match(/data-media-slot=/g) || []).length, 6);
+  assert.match(html, /class="lesson-bottom-nav"[\s\S]*?href="index.html#choose-guide"[\s\S]*?href="#page-top"/);
+  assert.match(html, /id="home-softening"[\s\S]*?href="softening.html"/);
+  for (const slug of ['index', 'intermediate', 'adults', 'softening', 'contact']) {
+    assert.doesNotMatch(page(slug), /lesson-layout|lesson-chapter|lesson-index|beginner-page/);
+  }
+});

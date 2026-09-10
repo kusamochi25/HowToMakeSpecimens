@@ -5,14 +5,15 @@ export function escapeHtml(text) {
   return text.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 }
 
-function workflowNav(slug) {
-  return `<nav class="workflow-nav" aria-label="作る順番"><ol>${workflow.map((step, i) => `<li><a href="${slug === 'beginner' ? '' : 'beginner.html'}#${step.id}"><span class="sequence-number">${i + 1}</span>${step.short}</a></li>`).join('')}</ol></nav>`;
+function workflowNav(slug, fullLabels = false) {
+  return `<nav class="workflow-nav" aria-label="作る順番"><ol>${workflow.map((step, i) => `<li><a href="${slug === 'beginner' ? '' : 'beginner.html'}#${step.id}"><span class="sequence-number">${i + 1}</span>${fullLabels ? `<span>${step.label}</span>` : step.short}</a></li>`).join('')}</ol></nav>`;
 }
 
 export function expandContent(source, slug) {
   return source.replace(/\{\{\s*([\w-]+)\s*\}\}/g, (_, key) => {
     if (key === 'scope') return `<p class="scope-inline">${scope}</p>`;
     if (key === 'workflow') return workflowNav(slug);
+    if (key === 'beginner-contents' && slug === 'beginner') return `<details class="lesson-index" id="lesson-index"><summary>作る手順<span class="index-toggle" aria-hidden="true"></span></summary><div class="lesson-index-body">${workflowNav(slug, true)}<nav class="lesson-extra-nav" aria-label="作業中に見たいところ"><a href="#questions">気になること</a><a href="#help">困ったときは</a></nav></div></details>`;
     if (key === 'contact-status') return contactStatus;
     if (key.startsWith('media-')) return mediaSlot(key.slice(6));
     if (key === 'hero-photo') return mediaSlot('hero', 'hero');
@@ -47,7 +48,7 @@ export function layout(page, source) {
 <link rel="stylesheet" href="styles.css" />
 <script type="module" src="site.js"></script>
 </head>
-<body class="${home ? 'home-page' : 'article-page'}">
+<body class="${home ? 'home-page' : 'article-page'}${page.slug === 'beginner' ? ' beginner-page' : ''}">
 <a class="skip-link" href="#main-content">本文へ</a>
 <header class="site-header">
 <div class="header-inner">
