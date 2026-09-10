@@ -23,3 +23,11 @@ export const workflow = [
   { id: 'dry', label: '乾かして保管する', short: '乾燥・保管' },
   { id: 'label', label: 'ラベルを添える', short: 'ラベル' }
 ];
+
+// Reading topics are not additional production steps.
+export const intermediateTopics = [
+  { id: 'purpose', label: '作る目的' },
+  { id: 'make-it', label: '配置と見せ方' },
+  { id: 'observation', label: '観察と比較' },
+  { id: 'reflection', label: '次の制作へ' }
+];

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { renderSite, validateSite } from '../scripts/build.mjs';
-import { pages, workflow, scope, contactStatus } from '../src/site.mjs';
+import { pages, workflow, intermediateTopics, scope, contactStatus } from '../src/site.mjs';
 import { expandContent } from '../src/components/layout.mjs';
 import { media } from '../src/media.mjs';
 import { mediaSlot } from '../src/components/media.mjs';
@@ -25,7 +25,7 @@ test('previously published bookmarks remain available', () => {
   const bookmarks = {
     index: ['choose-guide', 'choose-guide-heading', 'purpose-heading', 'before-heading'],
     beginner: ['beginner-start-heading', 'make-it', 'dry', 'questions'],
-    intermediate: ['intermediate-start-heading', 'make-it'],
+    intermediate: ['intermediate-start-heading', 'purpose', 'make-it', 'position', 'fix', 'legs', 'antennae', 'finish', 'observation', 'reflection'],
     softening: ['softening-methods', 'steam-method', 'paper-method', 'water-method', 'ready-check'],
     adults: ['roles', 'what', 'photo', 'home-preparation', 'relax', 'fix', 'spread', 'dry', 'finish', 'symmetry', 'broken', 'adjust', 'improve', 'label', 'label-purpose', 'label-date', 'no-label', 'answering']
   };
@@ -160,7 +160,24 @@ test('beginner lesson pairs instructions and photos, with one native contents an
   assert.equal((html.match(/data-media-slot=/g) || []).length, 6);
   assert.match(html, /class="lesson-bottom-nav"[\s\S]*?href="index.html#choose-guide"[\s\S]*?href="#page-top"/);
   assert.match(html, /id="home-softening"[\s\S]*?href="softening.html"/);
-  for (const slug of ['index', 'intermediate', 'adults', 'softening', 'contact']) {
+  for (const slug of ['index', 'adults', 'softening', 'contact']) {
     assert.doesNotMatch(page(slug), /lesson-layout|lesson-chapter|lesson-index|beginner-page/);
   }
+});
+
+test('intermediate uses the shared layout with reading topics, not another production workflow', () => {
+  const html = page('intermediate');
+  assert.match(html, /<body class="article-page intermediate-page">/);
+  const contents = html.match(/<details class="lesson-index"[\s\S]*?<\/details>/)[0];
+  assert.ok(contents.includes('このページの目次'));
+  for (const topic of intermediateTopics) {
+    assert.ok(contents.includes('href="#' + topic.id + '"'));
+    assert.ok(contents.includes(topic.label));
+  }
+  assert.equal((html.match(/class="lesson-chapter"/g) || []).length, 4);
+  assert.equal((html.match(/class="reference-topic"/g) || []).length, 5);
+  assert.equal((html.match(/data-media-slot="comparison"/g) || []).length, 1);
+  assert.doesNotMatch(html, /class="workflow-nav"|class="flow-step"|beginner-page/);
+  assert.match(html, /class="lesson-bottom-nav"[\s\S]*?href="index.html#choose-guide"[\s\S]*?href="#page-top"/);
+  for (const href of ['beginner.html#make-it', 'beginner.html#fix', 'beginner.html#dry', 'softening.html#ready-check', 'adults.html#roles']) assert.ok(html.includes('href="' + href + '"'));
 });

@@ -1,4 +1,4 @@
-import { navigation, workflow, scope, contactStatus } from '../site.mjs';
+import { navigation, workflow, intermediateTopics, scope, contactStatus } from '../site.mjs';
 import { mediaSlot } from './media.mjs';
 
 export function escapeHtml(text) {
@@ -9,11 +9,16 @@ function workflowNav(slug, fullLabels = false) {
   return `<nav class="workflow-nav" aria-label="作る順番"><ol>${workflow.map((step, i) => `<li><a href="${slug === 'beginner' ? '' : 'beginner.html'}#${step.id}"><span class="sequence-number">${i + 1}</span>${fullLabels ? `<span>${step.label}</span>` : step.short}</a></li>`).join('')}</ol></nav>`;
 }
 
+function lessonContents(title, nav, extra = '') {
+  return `<details class="lesson-index" id="lesson-index"><summary>${title}<span class="index-toggle" aria-hidden="true"></span></summary><div class="lesson-index-body">${nav}${extra}</div></details>`;
+}
+
 export function expandContent(source, slug) {
   return source.replace(/\{\{\s*([\w-]+)\s*\}\}/g, (_, key) => {
     if (key === 'scope') return `<p class="scope-inline">${scope}</p>`;
     if (key === 'workflow') return workflowNav(slug);
-    if (key === 'beginner-contents' && slug === 'beginner') return `<details class="lesson-index" id="lesson-index"><summary>作る手順<span class="index-toggle" aria-hidden="true"></span></summary><div class="lesson-index-body">${workflowNav(slug, true)}<nav class="lesson-extra-nav" aria-label="作業中に見たいところ"><a href="#questions">気になること</a><a href="#help">困ったときは</a></nav></div></details>`;
+    if (key === 'beginner-contents' && slug === 'beginner') return lessonContents('作る手順', workflowNav(slug, true), '<nav class="lesson-extra-nav" aria-label="作業中に見たいところ"><a href="#questions">気になること</a><a href="#help">困ったときは</a></nav>');
+    if (key === 'intermediate-contents' && slug === 'intermediate') return lessonContents('このページの目次', `<nav class="topic-nav" aria-label="解説の目次"><ul>${intermediateTopics.map(topic => `<li><a href="#${topic.id}">${topic.label}</a></li>`).join('')}</ul></nav>`, '<nav class="lesson-extra-nav" aria-label="作業手順へ"><a href="beginner.html#make-it">足と触角を整える手順へ</a></nav>');
     if (key === 'contact-status') return contactStatus;
     if (key.startsWith('media-')) return mediaSlot(key.slice(6));
     if (key === 'hero-photo') return mediaSlot('hero', 'hero');
@@ -48,7 +53,7 @@ export function layout(page, source) {
 <link rel="stylesheet" href="styles.css" />
 <script type="module" src="site.js"></script>
 </head>
-<body class="${home ? 'home-page' : 'article-page'}${page.slug === 'beginner' ? ' beginner-page' : ''}">
+<body class="${home ? 'home-page' : 'article-page'}${['beginner', 'intermediate'].includes(page.slug) ? ` ${page.slug}-page` : ''}">
 <a class="skip-link" href="#main-content">本文へ</a>
 <header class="site-header">
 <div class="header-inner">

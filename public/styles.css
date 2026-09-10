@@ -390,10 +390,10 @@ section[id], details[id] { scroll-margin-top: 20px; }
 }
 @media (prefers-reduced-motion: reduce) { .home-guide-card { transition: none; } }
 
-/* Beginner lesson: the homepage's fine rules, green accents and photo-led layout. */
-.beginner-page .page-return,
-.beginner-guide { width: min(1208px, calc(100% - 64px)); }
-.beginner-guide { margin-block: 0 64px; }
+/* Shared guide layout: the homepage's fine rules, green accents and photo frames. */
+:is(.beginner-page, .intermediate-page) .page-return,
+.beginner-guide, .intermediate-guide { width: min(1208px, calc(100% - 64px)); }
+.beginner-guide, .intermediate-guide { margin-block: 0 64px; }
 .lesson-intro { padding-block: 28px 32px; border-bottom: 1px solid var(--line); }
 .lesson-intro .eyebrow { letter-spacing: .16em; font-weight: 500; }
 .lesson-intro h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; letter-spacing: .04em; line-height: 1.5; }
@@ -411,6 +411,8 @@ section[id], details[id] { scroll-margin-top: 20px; }
 .lesson-index .workflow-nav li + li { margin: 0; }
 .lesson-index .workflow-nav a { padding: 12px 0; min-height: 50px; border: 0; border-top: 1px solid var(--line); gap: 12px; font-size: .9375rem; font-weight: 500; }
 .lesson-index .sequence-number { background: none; color: var(--leaf); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 1.4rem; width: 1.2em; height: auto; }
+.lesson-index .topic-nav ul { list-style: none; padding: 0; margin: 0; }
+.lesson-index .topic-nav a { display: flex; align-items: center; min-height: 50px; padding: 12px 0; border-top: 1px solid var(--line); text-decoration: none; font-size: .9375rem; }
 .lesson-index a:hover { text-decoration: underline; }
 .lesson-extra-nav { display: grid; padding-block: 8px; border-top: 1px solid var(--line); }
 .lesson-extra-nav a { display: flex; align-items: center; min-height: 44px; font-size: .9375rem; text-decoration: none; }
@@ -461,7 +463,20 @@ section[id], details[id] { scroll-margin-top: 20px; }
 .lesson-help ul { margin-bottom: 0; }
 .lesson-bottom-nav { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; padding-top: 24px; }
 .lesson-bottom-nav a { display: inline-flex; align-items: center; min-height: 48px; }
-.beginner-guide > .participant-contact { margin-left: 268px; }
+:is(.beginner-guide, .intermediate-guide) > .participant-contact { margin-left: 268px; }
+.intermediate-guide .lesson-intro .section-context { max-width: 48em; margin: 20px 0 0; font-size: .9375rem; }
+.reference-topic { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr); gap: 24px; padding-block: 26px; border-top: 1px solid var(--line); }
+.reference-topic > h3 { margin: 0; }
+.reference-topic .lesson-copy p { margin-top: 0; }
+.reference-topic .lesson-copy p:last-child { margin-bottom: 0; }
+.reference-photo { margin: 0 0 24px; }
+.reference-photo > .media-slot { width: 100%; max-width: none; margin: 0; }
+.observation-points { margin-block: 24px; padding: 20px 24px; border-left: 2px solid var(--moss); background: #f5f6f3; }
+.observation-points ul { margin: 0; }
+.reference-links { display: grid; gap: 0; padding-top: 8px; }
+.reference-links a { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 52px; padding-block: 12px; border-bottom: 1px solid var(--line); text-decoration: none; }
+.reference-links a:hover { text-decoration: underline; }
+.reference-links a::after { content: "→"; flex: none; }
 @media (min-width: 1100px) {
   .lesson-index { max-height: calc(100dvh - 48px); overflow-y: auto; }
 }
@@ -470,11 +485,11 @@ section[id], details[id] { scroll-margin-top: 20px; }
   .lesson-sidebar { position: static; margin-bottom: 32px; }
   .lesson-index { background: #f5f6f3; padding-inline: 20px; }
   .lesson-index .workflow-nav a { background: transparent; }
-  .beginner-guide > .participant-contact { margin-left: 0; }
+  :is(.beginner-guide, .intermediate-guide) > .participant-contact { margin-left: 0; }
 }
 @media (max-width: 760px) {
-  .beginner-page .page-return,
-  .beginner-guide { width: calc(100% - 40px); }
+  :is(.beginner-page, .intermediate-page) .page-return,
+  .beginner-guide, .intermediate-guide { width: calc(100% - 40px); }
   .lesson-intro { padding-block: 24px; }
   .lesson-intro h1 { font-size: 2rem; letter-spacing: .025em; }
   .lesson-media-row { grid-template-columns: minmax(0, 1fr); gap: 20px; }
@@ -484,8 +499,10 @@ section[id], details[id] { scroll-margin-top: 20px; }
   .chapter-heading .flow-step { margin-bottom: 8px; }
   .lesson-actions .next-step { width: 100%; margin-left: 0; }
   .lesson-help { padding: 20px; }
+  .reference-topic { grid-template-columns: minmax(0, 1fr); gap: 12px; padding-block: 24px; }
+  .observation-points { padding: 18px 20px; }
 }
 @media (max-width: 360px) {
-  .beginner-page .page-return,
-  .beginner-guide { width: calc(100% - 32px); }
+  :is(.beginner-page, .intermediate-page) .page-return,
+  .beginner-guide, .intermediate-guide { width: calc(100% - 32px); }
 }
