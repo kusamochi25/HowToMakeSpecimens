@@ -391,9 +391,9 @@ section[id], details[id] { scroll-margin-top: 20px; }
 @media (prefers-reduced-motion: reduce) { .home-guide-card { transition: none; } }
 
 /* Shared guide layout: the homepage's fine rules, green accents and photo frames. */
-:is(.beginner-page, .intermediate-page, .adults-page) .page-return,
-.beginner-guide, .intermediate-guide, .adults-guide { width: min(1208px, calc(100% - 64px)); }
-.beginner-guide, .intermediate-guide, .adults-guide { margin-block: 0 64px; }
+:is(.beginner-page, .intermediate-page, .adults-page, .softening-page) .page-return,
+.beginner-guide, .intermediate-guide, .adults-guide, .softening-guide { width: min(1208px, calc(100% - 64px)); }
+.beginner-guide, .intermediate-guide, .adults-guide, .softening-guide { margin-block: 0 64px; }
 .lesson-intro { padding-block: 28px 32px; border-bottom: 1px solid var(--line); }
 .lesson-intro .eyebrow { letter-spacing: .16em; font-weight: 500; }
 .lesson-intro h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; letter-spacing: .04em; line-height: 1.5; }
@@ -463,8 +463,8 @@ section[id], details[id] { scroll-margin-top: 20px; }
 .lesson-help ul { margin-bottom: 0; }
 .lesson-bottom-nav { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; padding-top: 24px; }
 .lesson-bottom-nav a { display: inline-flex; align-items: center; min-height: 48px; }
-:is(.beginner-guide, .intermediate-guide, .adults-guide) > .participant-contact { margin-left: 268px; }
-:is(.intermediate-guide, .adults-guide) .lesson-intro .section-context { max-width: 48em; margin: 20px 0 0; font-size: .9375rem; }
+:is(.beginner-guide, .intermediate-guide, .adults-guide, .softening-guide) > .participant-contact { margin-left: 268px; }
+:is(.intermediate-guide, .adults-guide, .softening-guide) .lesson-intro .section-context { max-width: 48em; margin: 20px 0 0; font-size: .9375rem; }
 .reference-topic { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr); gap: 24px; padding-block: 26px; border-top: 1px solid var(--line); }
 .reference-topic > h3 { margin: 0; }
 .reference-topic .lesson-copy p { margin-top: 0; }
@@ -477,6 +477,17 @@ section[id], details[id] { scroll-margin-top: 20px; }
 .reference-links a { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 52px; padding-block: 12px; border-bottom: 1px solid var(--line); text-decoration: none; }
 .reference-links a:hover { text-decoration: underline; }
 .reference-links a::after { content: "→"; flex: none; }
+.softening-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-block: 24px; }
+.softening-choice { display: flex; flex-direction: column; min-width: 0; padding: 20px; border: 1px solid var(--line); }
+.softening-choice .note-mark { margin: 0 0 6px; letter-spacing: .08em; }
+.softening-choice h3 { margin: 0; }
+.softening-choice .next-step { margin-top: auto; justify-content: space-between; gap: 12px; min-height: 48px; }
+.softening-choice .next-step::after { content: "→"; flex: none; }
+.softening-step h3 { margin: 0; }
+.softening-step .step-label { margin: 0 0 6px; }
+.softening-guide .callout { border: 0; background: #f5f6f3; }
+.softening-guide .method-exit { margin-top: 28px; margin-bottom: 0; }
+.softening-guide .method-conditions { margin-bottom: 24px; }
 @media (min-width: 1100px) {
   .lesson-index { max-height: calc(100dvh - 48px); overflow-y: auto; }
 }
@@ -485,11 +496,11 @@ section[id], details[id] { scroll-margin-top: 20px; }
   .lesson-sidebar { position: static; margin-bottom: 32px; }
   .lesson-index { background: #f5f6f3; padding-inline: 20px; }
   .lesson-index .workflow-nav a { background: transparent; }
-  :is(.beginner-guide, .intermediate-guide, .adults-guide) > .participant-contact { margin-left: 0; }
+  :is(.beginner-guide, .intermediate-guide, .adults-guide, .softening-guide) > .participant-contact { margin-left: 0; }
 }
 @media (max-width: 760px) {
-  :is(.beginner-page, .intermediate-page, .adults-page) .page-return,
-  .beginner-guide, .intermediate-guide, .adults-guide { width: calc(100% - 40px); }
+  :is(.beginner-page, .intermediate-page, .adults-page, .softening-page) .page-return,
+  .beginner-guide, .intermediate-guide, .adults-guide, .softening-guide { width: calc(100% - 40px); }
   .lesson-intro { padding-block: 24px; }
   .lesson-intro h1 { font-size: 2rem; letter-spacing: .025em; }
   .lesson-media-row { grid-template-columns: minmax(0, 1fr); gap: 20px; }
@@ -501,8 +512,9 @@ section[id], details[id] { scroll-margin-top: 20px; }
   .lesson-help { padding: 20px; }
   .reference-topic { grid-template-columns: minmax(0, 1fr); gap: 12px; padding-block: 24px; }
   .observation-points { padding: 18px 20px; }
+  .softening-choices { grid-template-columns: minmax(0, 1fr); gap: 16px; }
 }
 @media (max-width: 360px) {
-  :is(.beginner-page, .intermediate-page, .adults-page) .page-return,
-  .beginner-guide, .intermediate-guide, .adults-guide { width: calc(100% - 32px); }
+  :is(.beginner-page, .intermediate-page, .adults-page, .softening-page) .page-return,
+  .beginner-guide, .intermediate-guide, .adults-guide, .softening-guide { width: calc(100% - 32px); }
 }

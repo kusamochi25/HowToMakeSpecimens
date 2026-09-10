@@ -1,4 +1,4 @@
-import { navigation, workflow, intermediateTopics, adultTopics, scope, contactStatus } from '../site.mjs';
+import { navigation, workflow, intermediateTopics, adultTopics, softeningTopics, scope, contactStatus } from '../site.mjs';
 import { mediaSlot } from './media.mjs';
 
 export function escapeHtml(text) {
@@ -24,6 +24,7 @@ export function expandContent(source, slug) {
     if (key === 'beginner-contents' && slug === 'beginner') return lessonContents('作る手順', workflowNav(slug, true), '<nav class="lesson-extra-nav" aria-label="作業中に見たいところ"><a href="#questions">気になること</a><a href="#help">困ったときは</a></nav>');
     if (key === 'intermediate-contents' && slug === 'intermediate') return readingContents(intermediateTopics, '<nav class="lesson-extra-nav" aria-label="作業手順へ"><a href="beginner.html#make-it">足と触角を整える手順へ</a></nav>');
     if (key === 'adults-contents' && slug === 'adults') return readingContents(adultTopics, '<nav class="lesson-extra-nav" aria-label="子どもと一緒に読む"><a href="beginner.html#questions">子ども向けの短い説明へ</a><a href="beginner.html">標本を作る手順へ</a></nav>');
+    if (key === 'softening-contents' && slug === 'softening') return readingContents(softeningTopics, '<nav class="lesson-extra-nav" aria-label="標本を作る手順へ"><a href="beginner.html#home-preparation">甲虫の準備に戻る</a></nav>');
     if (key === 'contact-status') return contactStatus;
     if (key.startsWith('media-')) return mediaSlot(key.slice(6));
     if (key === 'hero-photo') return mediaSlot('hero', 'hero');
@@ -58,7 +59,7 @@ export function layout(page, source) {
 <link rel="stylesheet" href="styles.css" />
 <script type="module" src="site.js"></script>
 </head>
-<body class="${home ? 'home-page' : 'article-page'}${['beginner', 'intermediate', 'adults'].includes(page.slug) ? ` ${page.slug}-page` : ''}">
+<body class="${home ? 'home-page' : 'article-page'}${['beginner', 'intermediate', 'adults', 'softening'].includes(page.slug) ? ` ${page.slug}-page` : ''}">
 <a class="skip-link" href="#main-content">本文へ</a>
 <header class="site-header">
 <div class="header-inner">

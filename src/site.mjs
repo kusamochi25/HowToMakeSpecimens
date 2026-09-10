@@ -40,3 +40,12 @@ export const adultTopics = [
   { id: 'answering', label: '子どもの疑問に付き合う' },
   { id: 'guide-approach', label: 'このガイドの考え方' }
 ];
+
+export const softeningTopics = [
+  { id: 'before-softening', label: '軟化を始める前に' },
+  { id: 'softening-methods', label: '方法を選ぶ' },
+  { id: 'paper-method', label: '方法 A：湿らせた紙' },
+  { id: 'water-method', label: '方法 B：お湯' },
+  { id: 'ready-check', label: '動かせるか確認する' },
+  { id: 'after-softening', label: '軟化のあとの作業' }
+];

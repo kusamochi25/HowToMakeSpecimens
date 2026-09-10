@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { renderSite, validateSite } from '../scripts/build.mjs';
-import { pages, workflow, intermediateTopics, adultTopics, scope, contactStatus } from '../src/site.mjs';
+import { pages, workflow, intermediateTopics, adultTopics, softeningTopics, scope, contactStatus } from '../src/site.mjs';
 import { expandContent } from '../src/components/layout.mjs';
 import { media } from '../src/media.mjs';
 import { mediaSlot } from '../src/components/media.mjs';
@@ -160,7 +160,7 @@ test('beginner lesson pairs instructions and photos, with one native contents an
   assert.equal((html.match(/data-media-slot=/g) || []).length, 6);
   assert.match(html, /class="lesson-bottom-nav"[\s\S]*?href="index.html#choose-guide"[\s\S]*?href="#page-top"/);
   assert.match(html, /id="home-softening"[\s\S]*?href="softening.html"/);
-  for (const slug of ['index', 'softening', 'contact']) {
+  for (const slug of ['index', 'contact']) {
     assert.doesNotMatch(page(slug), /lesson-layout|lesson-chapter|lesson-index|beginner-page/);
   }
 });
@@ -199,4 +199,30 @@ test('adult reference has six discoverable chapters and keeps child answers on t
   for (const id of ['guide-approach', 'respect-intent', 'facts-and-ideas', 'unanswered']) {
     assert.ok(records.some(record => record.href === 'adults.html#' + id));
   }
+});
+
+test('home preparation uses its own contents, explicit method choices and a shared readiness check', () => {
+  const html = page('softening');
+  assert.match(html, /<body class="article-page softening-page">/);
+  const contents = html.match(/<details class="lesson-index"[\s\S]*?<\/details>/)[0];
+  for (const topic of softeningTopics) {
+    assert.ok(contents.includes('href="#' + topic.id + '"'));
+    assert.ok(contents.includes(topic.label));
+  }
+  assert.doesNotMatch(html, /class="workflow-nav"|class="flow-step"/);
+  assert.equal((html.match(/class="lesson-chapter"/g) || []).length, 6);
+  assert.equal((html.match(/class="softening-choice"/g) || []).length, 2);
+  assert.equal((html.match(/class="reference-topic softening-step"/g) || []).length, 11);
+  const choices = html.slice(html.indexOf('id="softening-methods"'), html.indexOf('id="paper-method"'));
+  assert.match(choices, /方法 Aの手順を見る/);
+  assert.match(choices, /方法 Bの手順を見る/);
+  assert.match(choices, /両方を続けて行う手順ではありません/);
+  for (const [start, end, photo] of [['paper-method', 'water-method', 'softening-paper'], ['water-method', 'ready-check', 'softening-water']]) {
+    const method = html.slice(html.indexOf('id="' + start + '"'), html.indexOf('id="' + end + '"'));
+    assert.ok(method.indexOf('data-media-slot="' + photo + '"') < method.indexOf('class="softening-steps"'));
+    const exit = method.match(/<nav class="method-exit lesson-actions"[\s\S]*?<\/nav>/)[0];
+    assert.match(exit, /href="#ready-check"/);
+    assert.doesNotMatch(exit, /href="#(?:paper|water)-method"/);
+  }
+  assert.match(html, /class="lesson-bottom-nav"[\s\S]*?href="index.html#choose-guide"[\s\S]*?href="#page-top"/);
 });
