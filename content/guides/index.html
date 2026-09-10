@@ -1,33 +1,51 @@
-<main>
-  <section class="hero paper">
-    <h1>昆虫標本ガイド</h1>
-    <p class="lead">甲虫の形を整えて、乾かし、標本として残すためのガイドです。ワークショップでも、家庭でも使えます。</p>
-    {{ scope }}
+<main class="home-main">
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="hero-copy">
+      <p class="eyebrow">BOOM INSECT</p>
+      <h1 id="home-title"><span class="title-phrase">昆虫標本</span><wbr><span class="title-phrase">ガイド</span></h1>
+      <p class="lead">ワークショップで甲虫の標本を作るためのガイドです。初めての人も、手順に沿って作業できます。</p>
+      <a class="button hero-button" href="beginner.html">はじめてつくるを見る <span aria-hidden="true">→</span></a>
+    </div>
+    {{ hero-photo }}
+    <div class="hero-scope">{{ scope }}</div>
   </section>
-  <section class="section" id="choose-guide" aria-labelledby="choose-guide-heading">
-    <div class="section-heading"><h2 id="choose-guide-heading">ガイドを選ぶ</h2></div>
-    <article class="guide-card beginner-card primary-guide">
-      <p class="card-number">作り方を順番に見る</p>
-      <h3>はじめてつくる</h3>
-      <p>甲虫の準備から、足と触角の整え方、乾燥・保管、ラベルまで。</p>
-      <a class="button" href="beginner.html">作る手順を見る →</a>
-      <div class="entry-links" id="before-heading"><a href="beginner.html#tools">会場で作る：道具の確認へ</a><a href="beginner.html#home-preparation">家で作る：甲虫の準備へ</a></div>
-    </article>
-  </section>
-  <section class="section" aria-labelledby="references-heading">
-    <div class="section-heading"><h2 id="references-heading">必要なところを、くわしく</h2><p>作業の途中でも、作り終えてからでも読める解説です。</p></div>
-    <div class="guide-grid">
-      <article class="guide-card home-card"><h3>軟化について</h3><p>乾燥して硬い甲虫を使うときに。方法の選び方と、動かせる状態の確かめ方を説明します。</p><a href="softening.html">軟化の解説を読む →</a></article>
-      <article class="guide-card intermediate-card"><h3>もっとくわしく</h3><p>足や触角の配置、見せ方の工夫、完成後の観察。次の制作に生かしたい人へ。</p><a href="intermediate.html">制作の工夫を読む →</a></article>
-      <article class="guide-card adults-card"><h3><span class="title-phrase">大人・先生の</span><wbr><span class="title-phrase">ために</span></h3><p>作業の意味や、作品・学術資料としての標本の役割を知り、子どもの疑問に答えるための資料です。</p><a href="adults.html">大人向け資料を読む →</a></article>
+  <section class="home-section" id="choose-guide" aria-labelledby="choose-guide-heading">
+    <div class="ruled-heading"><h2 id="choose-guide-heading">ガイドを選ぶ</h2><span aria-hidden="true"></span><p>目的に合わせて読めます。</p></div>
+    <div class="home-guide-grid">
+      <a class="home-guide-card" href="beginner.html">
+        <div class="card-heading"><span class="card-number" aria-hidden="true">01</span><h3>はじめてつくる</h3></div>
+        {{ card-photo-beginner }}
+        <p>初めての人へ。道具の使い方と、作り方を順番に案内します。</p><span class="card-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="home-guide-card" href="intermediate.html">
+        <div class="card-heading"><span class="card-number" aria-hidden="true">02</span><h3>もっとくわしく</h3></div>
+        {{ card-photo-intermediate }}
+        <p>足や触角の配置、見せ方の工夫。次の制作に生かしたい人へ。</p><span class="card-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="home-guide-card" href="adults.html">
+        <div class="card-heading"><span class="card-number" aria-hidden="true">03</span><h3><span class="title-phrase">大人・先生の</span><wbr><span class="title-phrase">ために</span></h3></div>
+        {{ card-photo-adults }}
+        <p>標本の役割や制作の意味を知り、子どもの疑問に答えるための資料です。</p><span class="card-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="home-guide-card" href="softening.html">
+        <div class="card-heading"><span class="card-number" aria-hidden="true">04</span><h3>家庭でつくる</h3></div>
+        {{ card-photo-home }}
+        <p>乾燥した甲虫から作るときの、軟化の方法と状態の確かめ方です。</p><span class="card-arrow" aria-hidden="true">→</span>
+      </a>
     </div>
   </section>
-  <section class="section purpose-section" aria-labelledby="purpose-heading">
-    <div class="section-heading"><h2 id="purpose-heading">標本でできること</h2></div>
-    <div class="note-grid">
-      <article class="note"><h3>姿を楽しむ</h3><p>気に入った姿に整え、色や形の美しさを楽しめます。</p></article>
-      <article class="note"><h3>観察して比べる</h3><p>足や触角をよく見たり、ほかの標本と特徴を比べたりできます。</p></article>
-      <article class="note"><h3>記録を残す</h3><p>採った場所や日付を添えると、その虫と出会ったときの記録も残せます。</p></article>
+  <section class="home-section" aria-labelledby="purpose-heading">
+    <div class="ruled-heading"><h2 id="purpose-heading">標本でできること</h2><span aria-hidden="true"></span><p>楽しみながら、観察し、記録する。</p></div>
+    <div class="benefit-grid">
+      <article class="benefit"><span class="benefit-icon icon-display" aria-hidden="true">◇</span><div><h3>姿を楽しむ</h3><p>自分の気に入った姿に整えて、色や形の美しさを楽しめます。</p></div></article>
+      <article class="benefit"><span class="benefit-icon" aria-hidden="true"><span class="ui-icon icon-search"></span></span><div><h3>観察して比べる</h3><p>足や触角をじっくり見て、ほかの標本と特徴を比べられます。</p></div></article>
+      <article class="benefit"><span class="benefit-icon" aria-hidden="true"><span class="ui-icon icon-record"></span></span><div><h3>採集情報を記録する</h3><p>いつ・どこで・誰が採った虫かを、標本と一緒に残せます。</p></div></article>
     </div>
+  </section>
+  <section class="workshop-banner" aria-labelledby="before-heading">
+    <span class="workshop-icon" aria-hidden="true">i</span>
+    <h2 id="before-heading">ワークショップについて</h2>
+    <p>分からない作業や、うまく動かせない部分があるときは、スタッフに声をかけてください。</p>
+    <a class="button" href="beginner.html#tools">会場での作り方 <span aria-hidden="true">→</span></a>
   </section>
 </main>

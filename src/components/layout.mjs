@@ -1,4 +1,5 @@
-import { pages, workflow, scope, contactStatus } from '../site.mjs';
+import { navigation, workflow, scope, contactStatus } from '../site.mjs';
+import { mediaSlot } from './media.mjs';
 
 export function escapeHtml(text) {
   return text.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
@@ -13,6 +14,9 @@ export function expandContent(source, slug) {
     if (key === 'scope') return `<p class="scope-inline">${scope}</p>`;
     if (key === 'workflow') return workflowNav(slug);
     if (key === 'contact-status') return contactStatus;
+    if (key.startsWith('media-')) return mediaSlot(key.slice(6));
+    if (key === 'hero-photo') return mediaSlot('hero', 'hero');
+    if (key.startsWith('card-photo-')) return mediaSlot('card-' + key.slice(11), 'card');
     if (key.startsWith('step-')) {
       const index = workflow.findIndex(step => step.id === key.slice(5));
       if (index !== -1) return `<p class="flow-step">STEP ${index + 1}</p>`;
@@ -24,7 +28,7 @@ export function expandContent(source, slug) {
 export function layout(page, source) {
   const home = page.slug === 'index';
   const contact = page.slug === 'contact';
-  const footerLinks = pages.filter(item => item.slug !== 'contact').map(item => `<a href="${item.slug}.html"${item.slug === page.slug ? ' aria-current="page"' : ''}>${item.label}</a>`).join('\n');
+  const links = navigation.map(item => `<a href="${item.href}"${item.href === `${page.slug}.html` ? ' aria-current="page"' : ''}>${item.label}</a>`).join('\n');
   const participantContact = `<aside class="participant-contact" aria-label="ワークショップ参加後のご相談">
 <a href="contact.html">ワークショップ参加後のご相談 →</a>
 <p>参加された方の、標本制作についてのご質問はこちらへ。</p>
@@ -41,19 +45,35 @@ export function layout(page, source) {
 <meta name="description" content="${escapeHtml(page.description)}" />
 <title>${escapeHtml(page.title || `${page.label}｜昆虫標本ガイド`)}</title>
 <link rel="stylesheet" href="styles.css" />
+<script type="module" src="site.js"></script>
 </head>
-<body>
+<body class="${home ? 'home-page' : 'article-page'}">
 <a class="skip-link" href="#main-content">本文へ</a>
-<header class="site-header${home ? ' home-header' : ''}">
-<a class="brand" href="index.html"><span>BOOM INSECT</span><strong>昆虫標本ガイド</strong></a>
-${home ? '' : '<a class="guide-index-link" href="index.html#choose-guide">← ガイド一覧へ</a>'}
+<header class="site-header">
+<div class="header-inner">
+<a class="brand" href="index.html" aria-label="BOOM INSECT 昆虫標本ガイド トップ">BOOM INSECT</a>
+<nav class="desktop-nav" aria-label="サイトの案内">${links}</nav>
+<div class="header-actions">
+<button class="icon-button search-toggle" type="button" data-search-open aria-label="サイト内を検索" aria-haspopup="dialog" aria-controls="site-search" hidden><span class="ui-icon icon-search" aria-hidden="true"></span></button>
+<details class="mobile-menu" id="mobile-menu"><summary aria-label="メニューを開閉"><span class="menu-icon" aria-hidden="true"></span><span class="sr-only">メニュー</span></summary><nav aria-label="スマートフォンのサイト案内">${links}<a href="index.html#choose-guide">ガイド一覧</a><a href="contact.html">お問い合わせ（受付準備中）</a></nav></details>
+</div>
+<p class="header-caption">甲虫の標本づくりを、<br />わかりやすく。</p>
+</div>
 </header>
+${home ? '' : '<div class="page-return"><a class="guide-index-link" href="index.html#choose-guide">← ガイド一覧へ</a></div>'}
 ${main.replace('<main', '<main id="main-content"')}
-<footer class="site-footer">
-<p><strong>BOOM INSECT</strong>｜昆虫標本ガイド</p>
-<nav class="footer-nav" aria-label="フッターのサイト案内">${footerLinks}</nav>
-<p class="site-scope">${scope}</p>
+<footer class="site-footer"><div class="footer-inner">
+<a class="brand footer-brand" href="index.html">BOOM INSECT</a>
+<div class="footer-content"><nav class="footer-nav" aria-label="フッターのサイト案内">${links}<a href="contact.html">お問い合わせ</a></nav><p class="site-scope">${scope}</p></div>
+<small class="copyright">© BOOM INSECT</small>
+</div>
 </footer>
+<dialog class="search-dialog" id="site-search" aria-labelledby="search-heading">
+<div class="search-dialog-heading"><h2 id="search-heading">サイト内を検索</h2><button type="button" class="icon-button" data-search-close aria-label="検索を閉じる">×</button></div>
+<form class="search-form" role="search"><label for="search-query">知りたい言葉</label><div class="search-input-row"><input type="search" id="search-query" name="q" placeholder="例：軟化、乾燥、ラベル" maxlength="100" autocomplete="off" /><button class="button" type="submit">検索</button></div></form>
+<p class="search-status" role="status" aria-live="polite">言葉を入力すると、ガイドの見出しと本文から探せます。</p>
+<ul class="search-results"></ul>
+</dialog>
 </body>
 </html>
 `;

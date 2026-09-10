@@ -1,0 +1,110 @@
+/* Photo-backed editorial homepage. Photo dimensions exist before the files do. */
+[hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.home-main { width: min(1320px, 100%); }
+.home-hero { position: relative; isolation: isolate; min-height: 390px; background: #eff0ed; display: grid; grid-template-columns: 1.05fr 1fr; overflow: hidden; }
+.hero-copy { position: relative; z-index: 1; padding: clamp(32px, 4vw, 56px); padding-right: 20px; align-self: center; }
+.hero-copy .eyebrow { font-size: .875rem; letter-spacing: .2em; font-weight: 500; margin-bottom: 8px; }
+.hero-copy h1 { font-size: clamp(2rem, 4vw, 3.65rem); letter-spacing: .08em; font-weight: 500; line-height: 1.5; }
+.hero-copy .lead { max-width: 31em; margin-block: 8px 20px; }
+.hero-copy .scope-inline { max-width: 33em; margin-top: 20px; line-height: 1.7; }
+.hero-scope { position: relative; z-index: 1; grid-column: 1; padding: 0 20px 26px clamp(32px, 4vw, 56px); }
+.hero-scope .scope-inline { margin: 0; font-size: .875rem; line-height: 1.7; }
+.hero-button { padding: 11px 24px; gap: 24px; min-height: 48px; }
+.hero-button span { margin-left: auto; }
+.media-slot { margin: 22px 0; min-width: 0; }
+.media-surface { position: relative; overflow: hidden; background: #eceeea; }
+.media-surface img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.media-placeholder { position: absolute; inset: 12px; display: grid; align-content: center; justify-items: center; gap: 5px; padding: 12px; text-align: center; color: #66736b; border: 1px dashed #b2bcb4; }
+.media-placeholder-label { font-size: .9375rem; }
+.media-placeholder-note { font-size: .75rem; letter-spacing: .06em; }
+.media-slot figcaption { margin-top: 8px; font-size: .875rem; color: var(--muted); }
+.media-slot--hero { margin: 0; position: relative; align-self: stretch; grid-column: 2; grid-row: 1 / 3; }
+.media-slot--hero .media-surface { position: absolute; inset: 0; height: 100%; background: #e1e5df; }
+.media-slot--hero .media-placeholder { inset: 24px; }
+.media-slot--hero figcaption { position: absolute; right: 18px; bottom: 14px; max-width: 70%; background: rgba(255,255,255,.9); padding: 4px 10px; text-align: right; }
+.media-slot--card { margin: 0; grid-area: photo; }
+.media-slot--card .media-surface { aspect-ratio: 16 / 9; }
+.media-slot--card .media-surface img { position: absolute; inset: 0; }
+.media-slot--card .media-placeholder { inset: 8px; padding: 6px; }
+.media-slot--card .media-placeholder-label { font-size: .875rem; }
+.media-slot--card .media-placeholder-note { display: none; }
+.media-slot--article { max-width: 600px; }
+.media-slot--article .media-surface { aspect-ratio: var(--media-ratio, 20 / 13); }
+.media-slot--article[data-media-state="image"] .media-surface { aspect-ratio: auto; }
+.media-slot--article img { height: auto; object-fit: contain; }
+.home-section { margin: 30px clamp(20px, 4vw, 56px); }
+.ruled-heading { display: flex; align-items: center; gap: 20px; margin-bottom: 18px; }
+.ruled-heading h2 { flex: none; font-size: 1.5rem; letter-spacing: .13em; font-weight: 500; }
+.ruled-heading > span { flex: 1; border-top: 1px solid #aeb7b0; min-width: 20px; }
+.ruled-heading p { margin: 0; font-size: .875rem; color: var(--muted); }
+.home-guide-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.home-guide-card { display: grid; grid-template-columns: minmax(0, 1fr) 30px; grid-template-rows: auto auto 1fr; grid-template-areas: "heading heading" "photo photo" "description arrow"; gap: 10px; align-items: start; min-width: 0; padding: 14px; border: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: border-color .15s, background-color .15s; }
+.home-guide-card:hover { border-color: var(--leaf); background: #f7f8f5; }
+.card-heading { grid-area: heading; display: flex; align-items: center; gap: 12px; min-width: 0; }
+.card-heading .card-number { flex: none; color: var(--ink); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 2rem; line-height: 1; font-weight: 400; margin: 0; }
+.card-heading h3 { font-size: 1rem; font-weight: 500; letter-spacing: .03em; }
+.home-guide-card > p { grid-area: description; margin: 0; font-size: 1rem; line-height: 1.7; }
+.card-arrow { grid-area: arrow; align-self: end; display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid #68786e; border-radius: 50%; line-height: 1; font-size: 1.15rem; margin-bottom: 3px; }
+.benefit-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
+.benefit { display: grid; grid-template-columns: 58px minmax(0, 1fr); align-items: start; gap: 18px; }
+.benefit + .benefit { padding-left: 22px; border-left: 1px solid #edf0eb; }
+.benefit h3 { font-size: 1.15rem; font-weight: 500; margin: 3px 0 4px; }
+.benefit p { margin: 0; font-size: 1rem; line-height: 1.7; }
+.benefit-icon { width: 58px; height: 58px; display: grid; place-items: center; border-radius: 50%; background: #f0f2ef; font-family: serif; font-size: 2rem; }
+.workshop-banner { display: grid; grid-template-columns: 40px auto minmax(0, 1fr) auto; align-items: center; gap: 22px; padding: 20px 24px; margin: 32px clamp(20px, 4vw, 56px); background: #eef1eb; }
+.workshop-banner h2 { font-size: 1.25rem; font-weight: 500; }
+.workshop-banner p { margin: 0; padding-left: 24px; border-left: 1px solid #bec8bf; line-height: 1.7; font-size: 1rem; }
+.workshop-banner .button { padding: 10px 18px; gap: 18px; font-size: .875rem; }
+.workshop-icon { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--leaf); border-radius: 50%; font-family: serif; font-size: 1.5rem; }
+@media (min-width: 1600px) { .home-hero { min-height: 440px; } }
+@media (max-width: 1100px) {
+  .home-guide-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .workshop-banner { grid-template-columns: 40px minmax(0, 1fr) auto; gap: 12px 18px; }
+  .workshop-banner p { grid-column: 2; padding: 0; border: 0; }
+  .workshop-banner .button { grid-column: 3; grid-row: 1 / 3; }
+  .workshop-banner h2 { grid-column: 2; }
+  .workshop-icon { grid-row: 1 / 3; }
+}
+@media (max-width: 760px) {
+  .home-section { margin: 24px 20px; }
+  .ruled-heading { gap: 12px; flex-wrap: wrap; }
+  .ruled-heading h2 { font-size: 1.25rem; letter-spacing: .06em; }
+  .ruled-heading p { flex-basis: 100%; }
+  .home-guide-grid { grid-template-columns: 1fr; gap: 10px; }
+  .home-guide-card { padding: 12px; grid-template-columns: minmax(86px, 30%) minmax(0, 1fr) 28px; grid-template-rows: auto auto; grid-template-areas: "photo heading arrow" "photo description arrow"; gap: 5px 12px; align-items: center; }
+  .card-heading { gap: 9px; align-self: end; }
+  .card-heading .card-number { font-size: 1.5rem; }
+  .card-heading h3 { font-size: 1rem; }
+  .home-guide-card > p { align-self: start; font-size: 1rem; }
+  .media-slot--card { align-self: center; }
+  .media-slot--card .media-surface { aspect-ratio: 4 / 3; }
+  .media-slot--card .media-placeholder { inset: 5px; padding: 5px; }
+  .card-arrow { align-self: center; }
+  .benefit-grid { grid-template-columns: 1fr; gap: 20px; }
+  .benefit + .benefit { padding: 0; border: 0; }
+  .workshop-banner { margin: 24px 20px; padding: 18px; grid-template-columns: 36px minmax(0, 1fr); }
+  .workshop-banner .button { grid-row: auto; grid-column: 2; justify-self: start; }
+  .workshop-banner h2 { font-size: 1.15rem; }
+}
+@media (max-width: 600px) {
+  .home-hero { display: block; min-height: 360px; }
+  .hero-copy { width: 65%; padding: 24px 0 24px 20px; }
+  .hero-scope { padding: 0 20px 20px; background: linear-gradient(0deg, #eff0ed 70%, #eff0ed00); }
+  .hero-copy h1 { font-size: 1.85rem; letter-spacing: .025em; }
+  .hero-copy .lead { margin-top: 10px; }
+  .hero-copy .scope-inline { font-size: .875rem; }
+  .hero-button { padding: 10px 12px; gap: 10px; font-size: 1rem; }
+  .media-slot--hero { position: absolute; inset: 0 0 0 48%; z-index: -1; }
+  .media-slot--hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #eff0ed 0%, transparent 38%); pointer-events: none; }
+  .media-slot--hero .media-placeholder { inset: 20px 10px 20px 35%; text-align: right; padding: 8px; }
+  .media-slot--hero .media-placeholder-label { writing-mode: vertical-rl; letter-spacing: .15em; }
+  .media-slot--hero .media-placeholder-note { display: none; }
+  .media-slot--hero figcaption { display: none; }
+}
+@media (max-width: 360px) {
+  .home-guide-card { grid-template-columns: 78px minmax(0, 1fr); grid-template-areas: "photo heading" "photo description"; }
+  .card-arrow { display: none; }
+  .home-section, .workshop-banner { margin-inline: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .home-guide-card { transition: none; } }

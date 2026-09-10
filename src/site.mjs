@@ -1,6 +1,13 @@
 // Navigation labels, document metadata and the production sequence live here.
 export const scope = '対象は甲虫の成虫です。チョウ・ガなど、ほかの昆虫や生きている甲虫は、この手順の対象外です。';
 export const contactStatus = '現在、受付準備中です。';
+export const navigation = [
+  { label: 'はじめてつくる', href: 'beginner.html' },
+  { label: 'もっとくわしく', href: 'intermediate.html' },
+  { label: '大人・先生のために', href: 'adults.html' },
+  { label: '家庭でつくる', href: 'softening.html' },
+  { label: 'FAQ', href: 'beginner.html#questions' }
+];
 export const pages = [
   { slug: 'index', label: 'トップ', title: '昆虫標本ガイド｜BOOM INSECT', description: '甲虫標本の作り方と、姿を楽しみ、観察し、記録を残すためのガイドです。' },
   { slug: 'beginner', label: 'はじめてつくる', description: '会場でも家庭でも使える、甲虫標本の準備から展足・乾燥・保管までの手順です。' },

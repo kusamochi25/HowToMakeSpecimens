@@ -8,56 +8,113 @@
 <meta name="description" content="甲虫標本の作り方と、姿を楽しみ、観察し、記録を残すためのガイドです。" />
 <title>昆虫標本ガイド｜BOOM INSECT</title>
 <link rel="stylesheet" href="styles.css" />
+<script type="module" src="site.js"></script>
 </head>
-<body>
+<body class="home-page">
 <a class="skip-link" href="#main-content">本文へ</a>
-<header class="site-header home-header">
-<a class="brand" href="index.html"><span>BOOM INSECT</span><strong>昆虫標本ガイド</strong></a>
-
+<header class="site-header">
+<div class="header-inner">
+<a class="brand" href="index.html" aria-label="BOOM INSECT 昆虫標本ガイド トップ">BOOM INSECT</a>
+<nav class="desktop-nav" aria-label="サイトの案内"><a href="beginner.html">はじめてつくる</a>
+<a href="intermediate.html">もっとくわしく</a>
+<a href="adults.html">大人・先生のために</a>
+<a href="softening.html">家庭でつくる</a>
+<a href="beginner.html#questions">FAQ</a></nav>
+<div class="header-actions">
+<button class="icon-button search-toggle" type="button" data-search-open aria-label="サイト内を検索" aria-haspopup="dialog" aria-controls="site-search" hidden><span class="ui-icon icon-search" aria-hidden="true"></span></button>
+<details class="mobile-menu" id="mobile-menu"><summary aria-label="メニューを開閉"><span class="menu-icon" aria-hidden="true"></span><span class="sr-only">メニュー</span></summary><nav aria-label="スマートフォンのサイト案内"><a href="beginner.html">はじめてつくる</a>
+<a href="intermediate.html">もっとくわしく</a>
+<a href="adults.html">大人・先生のために</a>
+<a href="softening.html">家庭でつくる</a>
+<a href="beginner.html#questions">FAQ</a><a href="index.html#choose-guide">ガイド一覧</a><a href="contact.html">お問い合わせ（受付準備中）</a></nav></details>
+</div>
+<p class="header-caption">甲虫の標本づくりを、<br />わかりやすく。</p>
+</div>
 </header>
-<main id="main-content">
-  <section class="hero paper">
-    <h1>昆虫標本ガイド</h1>
-    <p class="lead">甲虫の形を整えて、乾かし、標本として残すためのガイドです。ワークショップでも、家庭でも使えます。</p>
-    <p class="scope-inline">対象は甲虫の成虫です。チョウ・ガなど、ほかの昆虫や生きている甲虫は、この手順の対象外です。</p>
+
+<main id="main-content" class="home-main">
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="hero-copy">
+      <p class="eyebrow">BOOM INSECT</p>
+      <h1 id="home-title"><span class="title-phrase">昆虫標本</span><wbr><span class="title-phrase">ガイド</span></h1>
+      <p class="lead">ワークショップで甲虫の標本を作るためのガイドです。初めての人も、手順に沿って作業できます。</p>
+      <a class="button hero-button" href="beginner.html">はじめてつくるを見る <span aria-hidden="true">→</span></a>
+    </div>
+    <figure class="media-slot media-slot--hero" data-media-slot="hero" data-media-state="empty" style="--media-ratio:1600/1000">
+<div class="media-surface"><div class="media-placeholder"><span class="media-placeholder-label">メイン写真</span><span class="media-placeholder-note">写真スペース</span></div></div>
+
+</figure>
+    <div class="hero-scope"><p class="scope-inline">対象は甲虫の成虫です。チョウ・ガなど、ほかの昆虫や生きている甲虫は、この手順の対象外です。</p></div>
   </section>
-  <section class="section" id="choose-guide" aria-labelledby="choose-guide-heading">
-    <div class="section-heading"><h2 id="choose-guide-heading">ガイドを選ぶ</h2></div>
-    <article class="guide-card beginner-card primary-guide">
-      <p class="card-number">作り方を順番に見る</p>
-      <h3>はじめてつくる</h3>
-      <p>甲虫の準備から、足と触角の整え方、乾燥・保管、ラベルまで。</p>
-      <a class="button" href="beginner.html">作る手順を見る →</a>
-      <div class="entry-links" id="before-heading"><a href="beginner.html#tools">会場で作る：道具の確認へ</a><a href="beginner.html#home-preparation">家で作る：甲虫の準備へ</a></div>
-    </article>
-  </section>
-  <section class="section" aria-labelledby="references-heading">
-    <div class="section-heading"><h2 id="references-heading">必要なところを、くわしく</h2><p>作業の途中でも、作り終えてからでも読める解説です。</p></div>
-    <div class="guide-grid">
-      <article class="guide-card home-card"><h3>軟化について</h3><p>乾燥して硬い甲虫を使うときに。方法の選び方と、動かせる状態の確かめ方を説明します。</p><a href="softening.html">軟化の解説を読む →</a></article>
-      <article class="guide-card intermediate-card"><h3>もっとくわしく</h3><p>足や触角の配置、見せ方の工夫、完成後の観察。次の制作に生かしたい人へ。</p><a href="intermediate.html">制作の工夫を読む →</a></article>
-      <article class="guide-card adults-card"><h3><span class="title-phrase">大人・先生の</span><wbr><span class="title-phrase">ために</span></h3><p>作業の意味や、作品・学術資料としての標本の役割を知り、子どもの疑問に答えるための資料です。</p><a href="adults.html">大人向け資料を読む →</a></article>
+  <section class="home-section" id="choose-guide" aria-labelledby="choose-guide-heading">
+    <div class="ruled-heading"><h2 id="choose-guide-heading">ガイドを選ぶ</h2><span aria-hidden="true"></span><p>目的に合わせて読めます。</p></div>
+    <div class="home-guide-grid">
+      <a class="home-guide-card" href="beginner.html">
+        <div class="card-heading"><span class="card-number" aria-hidden="true">01</span><h3>はじめてつくる</h3></div>
+        <figure class="media-slot media-slot--card" data-media-slot="card-beginner" data-media-state="empty" style="--media-ratio:800/450" aria-hidden="true">
+<div class="media-surface"><div class="media-placeholder"><span class="media-placeholder-label">道具の写真</span><span class="media-placeholder-note">写真スペース</span></div></div>
+
+</figure>
+        <p>初めての人へ。道具の使い方と、作り方を順番に案内します。</p><span class="card-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="home-guide-card" href="intermediate.html">
+        <div class="card-heading"><span class="card-number" aria-hidden="true">02</span><h3>もっとくわしく</h3></div>
+        <figure class="media-slot media-slot--card" data-media-slot="card-intermediate" data-media-state="empty" style="--media-ratio:800/450" aria-hidden="true">
+<div class="media-surface"><div class="media-placeholder"><span class="media-placeholder-label">甲虫の写真</span><span class="media-placeholder-note">写真スペース</span></div></div>
+
+</figure>
+        <p>足や触角の配置、見せ方の工夫。次の制作に生かしたい人へ。</p><span class="card-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="home-guide-card" href="adults.html">
+        <div class="card-heading"><span class="card-number" aria-hidden="true">03</span><h3><span class="title-phrase">大人・先生の</span><wbr><span class="title-phrase">ために</span></h3></div>
+        <figure class="media-slot media-slot--card" data-media-slot="card-adults" data-media-state="empty" style="--media-ratio:800/450" aria-hidden="true">
+<div class="media-surface"><div class="media-placeholder"><span class="media-placeholder-label">標本とラベル</span><span class="media-placeholder-note">写真スペース</span></div></div>
+
+</figure>
+        <p>標本の役割や制作の意味を知り、子どもの疑問に答えるための資料です。</p><span class="card-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="home-guide-card" href="softening.html">
+        <div class="card-heading"><span class="card-number" aria-hidden="true">04</span><h3>家庭でつくる</h3></div>
+        <figure class="media-slot media-slot--card" data-media-slot="card-home" data-media-state="empty" style="--media-ratio:800/450" aria-hidden="true">
+<div class="media-surface"><div class="media-placeholder"><span class="media-placeholder-label">軟化の写真</span><span class="media-placeholder-note">写真スペース</span></div></div>
+
+</figure>
+        <p>乾燥した甲虫から作るときの、軟化の方法と状態の確かめ方です。</p><span class="card-arrow" aria-hidden="true">→</span>
+      </a>
     </div>
   </section>
-  <section class="section purpose-section" aria-labelledby="purpose-heading">
-    <div class="section-heading"><h2 id="purpose-heading">標本でできること</h2></div>
-    <div class="note-grid">
-      <article class="note"><h3>姿を楽しむ</h3><p>気に入った姿に整え、色や形の美しさを楽しめます。</p></article>
-      <article class="note"><h3>観察して比べる</h3><p>足や触角をよく見たり、ほかの標本と特徴を比べたりできます。</p></article>
-      <article class="note"><h3>記録を残す</h3><p>採った場所や日付を添えると、その虫と出会ったときの記録も残せます。</p></article>
+  <section class="home-section" aria-labelledby="purpose-heading">
+    <div class="ruled-heading"><h2 id="purpose-heading">標本でできること</h2><span aria-hidden="true"></span><p>楽しみながら、観察し、記録する。</p></div>
+    <div class="benefit-grid">
+      <article class="benefit"><span class="benefit-icon icon-display" aria-hidden="true">◇</span><div><h3>姿を楽しむ</h3><p>自分の気に入った姿に整えて、色や形の美しさを楽しめます。</p></div></article>
+      <article class="benefit"><span class="benefit-icon" aria-hidden="true"><span class="ui-icon icon-search"></span></span><div><h3>観察して比べる</h3><p>足や触角をじっくり見て、ほかの標本と特徴を比べられます。</p></div></article>
+      <article class="benefit"><span class="benefit-icon" aria-hidden="true"><span class="ui-icon icon-record"></span></span><div><h3>採集情報を記録する</h3><p>いつ・どこで・誰が採った虫かを、標本と一緒に残せます。</p></div></article>
     </div>
+  </section>
+  <section class="workshop-banner" aria-labelledby="before-heading">
+    <span class="workshop-icon" aria-hidden="true">i</span>
+    <h2 id="before-heading">ワークショップについて</h2>
+    <p>分からない作業や、うまく動かせない部分があるときは、スタッフに声をかけてください。</p>
+    <a class="button" href="beginner.html#tools">会場での作り方 <span aria-hidden="true">→</span></a>
   </section>
 
 </main>
 
-<footer class="site-footer">
-<p><strong>BOOM INSECT</strong>｜昆虫標本ガイド</p>
-<nav class="footer-nav" aria-label="フッターのサイト案内"><a href="index.html" aria-current="page">トップ</a>
-<a href="beginner.html">はじめてつくる</a>
+<footer class="site-footer"><div class="footer-inner">
+<a class="brand footer-brand" href="index.html">BOOM INSECT</a>
+<div class="footer-content"><nav class="footer-nav" aria-label="フッターのサイト案内"><a href="beginner.html">はじめてつくる</a>
 <a href="intermediate.html">もっとくわしく</a>
 <a href="adults.html">大人・先生のために</a>
-<a href="softening.html">軟化について</a></nav>
-<p class="site-scope">対象は甲虫の成虫です。チョウ・ガなど、ほかの昆虫や生きている甲虫は、この手順の対象外です。</p>
+<a href="softening.html">家庭でつくる</a>
+<a href="beginner.html#questions">FAQ</a><a href="contact.html">お問い合わせ</a></nav><p class="site-scope">対象は甲虫の成虫です。チョウ・ガなど、ほかの昆虫や生きている甲虫は、この手順の対象外です。</p></div>
+<small class="copyright">© BOOM INSECT</small>
+</div>
 </footer>
+<dialog class="search-dialog" id="site-search" aria-labelledby="search-heading">
+<div class="search-dialog-heading"><h2 id="search-heading">サイト内を検索</h2><button type="button" class="icon-button" data-search-close aria-label="検索を閉じる">×</button></div>
+<form class="search-form" role="search"><label for="search-query">知りたい言葉</label><div class="search-input-row"><input type="search" id="search-query" name="q" placeholder="例：軟化、乾燥、ラベル" maxlength="100" autocomplete="off" /><button class="button" type="submit">検索</button></div></form>
+<p class="search-status" role="status" aria-live="polite">言葉を入力すると、ガイドの見出しと本文から探せます。</p>
+<ul class="search-results"></ul>
+</dialog>
 </body>
 </html>

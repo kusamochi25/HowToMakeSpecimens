@@ -1,0 +1,18 @@
+// Set src to a path below public (e.g. images/home/hero.webp) when an owned photo is ready.
+// A null src deliberately reserves the requested photo frame without requesting a missing file.
+export const media = {
+  hero: { src: null, label: 'メイン写真', alt: '甲虫の姿が分かるメイン写真', width: 1600, height: 1000, position: '65% 50%', caption: '' },
+  'card-beginner': { src: null, label: '道具の写真', alt: '標本制作に使う道具', width: 800, height: 450 },
+  'card-intermediate': { src: null, label: '甲虫の写真', alt: '甲虫の頭と触角の細部', width: 800, height: 450 },
+  'card-adults': { src: null, label: '標本とラベル', alt: '甲虫標本と採集情報のラベル', width: 800, height: 450 },
+  'card-home': { src: null, label: '軟化の写真', alt: '家庭で甲虫を軟化するための道具と配置', width: 800, height: 450 },
+  tools: { src: null, label: '使う道具の写真', alt: 'スタイロフォームの作業台など、今回使う七つの道具', width: 1000, height: 650 },
+  fixation: { src: null, label: '固定方法の手元写真', alt: 'バンドと昆虫針と作業台の位置関係', width: 1000, height: 650 },
+  legs: { src: null, label: '足を整える手元写真', alt: '足を支えるピンセットの位置', width: 1000, height: 650 },
+  antennae: { src: null, label: '触角を整える手元写真', alt: '触角の付け根に近い部分を支えて整える様子', width: 1000, height: 650 },
+  drying: { src: null, label: '乾燥中のケースの写真', alt: '固定した甲虫をケースで乾かす配置', width: 1000, height: 650 },
+  label: { src: null, label: 'ラベルの写真', alt: '採集と制作の情報を区別したラベルと標本の対応', width: 1000, height: 650 },
+  'softening-paper': { src: null, label: '湿度容器の配置写真', alt: '湿った紙と乾いた小皿を隔てて甲虫を置いた容器', width: 1000, height: 650 },
+  'softening-water': { src: null, label: 'お湯から取り出す手元写真', alt: '甲虫の体を下からすくって取り出す様子', width: 1000, height: 650 },
+  comparison: { src: null, label: '配置を見比べる写真', alt: '足や触角の配置による見え方の違い', width: 1200, height: 700 }
+};
