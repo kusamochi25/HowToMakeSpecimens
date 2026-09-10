@@ -31,3 +31,12 @@ export const intermediateTopics = [
   { id: 'observation', label: '観察と比較' },
   { id: 'reflection', label: '次の制作へ' }
 ];
+
+export const adultTopics = [
+  { id: 'roles', label: '標本の楽しみ方と役割' },
+  { id: 'home-preparation', label: '制作工程の意味' },
+  { id: 'finish', label: '仕上がりと価値' },
+  { id: 'label', label: 'ラベルと記録' },
+  { id: 'answering', label: '子どもの疑問に付き合う' },
+  { id: 'guide-approach', label: 'このガイドの考え方' }
+];

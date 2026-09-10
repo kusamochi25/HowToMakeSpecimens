@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { renderSite, validateSite } from '../scripts/build.mjs';
-import { pages, workflow, intermediateTopics, scope, contactStatus } from '../src/site.mjs';
+import { pages, workflow, intermediateTopics, adultTopics, scope, contactStatus } from '../src/site.mjs';
 import { expandContent } from '../src/components/layout.mjs';
 import { media } from '../src/media.mjs';
 import { mediaSlot } from '../src/components/media.mjs';
@@ -160,7 +160,7 @@ test('beginner lesson pairs instructions and photos, with one native contents an
   assert.equal((html.match(/data-media-slot=/g) || []).length, 6);
   assert.match(html, /class="lesson-bottom-nav"[\s\S]*?href="index.html#choose-guide"[\s\S]*?href="#page-top"/);
   assert.match(html, /id="home-softening"[\s\S]*?href="softening.html"/);
-  for (const slug of ['index', 'adults', 'softening', 'contact']) {
+  for (const slug of ['index', 'softening', 'contact']) {
     assert.doesNotMatch(page(slug), /lesson-layout|lesson-chapter|lesson-index|beginner-page/);
   }
 });
@@ -180,4 +180,23 @@ test('intermediate uses the shared layout with reading topics, not another produ
   assert.doesNotMatch(html, /class="workflow-nav"|class="flow-step"|beginner-page/);
   assert.match(html, /class="lesson-bottom-nav"[\s\S]*?href="index.html#choose-guide"[\s\S]*?href="#page-top"/);
   for (const href of ['beginner.html#make-it', 'beginner.html#fix', 'beginner.html#dry', 'softening.html#ready-check', 'adults.html#roles']) assert.ok(html.includes('href="' + href + '"'));
+});
+
+test('adult reference has six discoverable chapters and keeps child answers on the beginner page', () => {
+  const html = page('adults');
+  assert.match(html, /<body class="article-page adults-page">/);
+  const contents = html.match(/<details class="lesson-index"[\s\S]*?<\/details>/)[0];
+  for (const topic of adultTopics) {
+    assert.ok(contents.includes('href="#' + topic.id + '"'));
+    assert.ok(contents.includes(topic.label));
+  }
+  assert.equal((html.match(/class="lesson-chapter"/g) || []).length, 6);
+  assert.equal((html.match(/class="reference-topic"/g) || []).length, 16);
+  assert.doesNotMatch(html, /class="workflow-nav"|class="flow-step"|class="beginner-question"/);
+  assert.match(contents, /href="beginner.html#questions"/);
+  assert.match(html, /class="lesson-bottom-nav"[\s\S]*?href="index.html#choose-guide"[\s\S]*?href="#page-top"/);
+  const records = JSON.parse(site.get('search-index.json'));
+  for (const id of ['guide-approach', 'respect-intent', 'facts-and-ideas', 'unanswered']) {
+    assert.ok(records.some(record => record.href === 'adults.html#' + id));
+  }
 });
