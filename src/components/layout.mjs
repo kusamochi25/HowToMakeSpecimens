@@ -59,7 +59,7 @@ export function layout(page, source) {
 <link rel="stylesheet" href="styles.css" />
 <script type="module" src="site.js"></script>
 </head>
-<body class="${home ? 'home-page' : 'article-page'}${['beginner', 'intermediate', 'adults', 'softening'].includes(page.slug) ? ` ${page.slug}-page` : ''}">
+<body class="${home ? 'home-page' : 'article-page'}${['beginner', 'intermediate', 'adults', 'softening'].includes(page.slug) ? ` ${page.slug}-page` : ''}${contact ? ' contact-route' : ''}">
 <a class="skip-link" href="#main-content">本文へ</a>
 <header class="site-header">
 <div class="header-inner">

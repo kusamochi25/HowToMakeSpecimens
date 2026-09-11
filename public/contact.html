@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="styles.css" />
 <script type="module" src="site.js"></script>
 </head>
-<body class="article-page">
+<body class="article-page contact-route">
 <a class="skip-link" href="#main-content">本文へ</a>
 <header class="site-header">
 <div class="header-inner">
@@ -33,52 +33,82 @@
 </header>
 <div class="page-return"><a class="guide-index-link" href="index.html#choose-guide">← ガイド一覧へ</a></div>
 <main id="main-content" class="guide-page contact-page">
-<section class="guide-intro paper contact-intro">
+<header class="lesson-intro">
 <p class="eyebrow">CONTACT</p>
 <h1>お問い合わせ</h1>
-<p class="lead">ワークショップ参加者向けのお問い合わせページです。</p>
+<p class="lead">ワークショップで作った標本について、作り方や保管方法を相談するためのページです。</p>
+</header>
+
+<section class="contact-availability" aria-labelledby="contact-status">
+<h2 id="contact-status">現在、受付準備中です。</h2>
+<p>このページからの入力・送信はまだできません。</p>
 </section>
-<section class="contact-panel paper" aria-labelledby="form-heading">
-<h2 id="form-heading">お問い合わせ内容</h2>
-<p id="contact-status" class="contact-status">現在、受付準備中です。 入力・送信はまだできません。</p>
-<details class="form-preview"><summary>受付開始後の入力項目を見る（見本）</summary>
-<!-- 受付開始時に送信先・個人情報の取り扱いを設定し、送信処理を接続する。 -->
-<form aria-describedby="contact-status">
-<fieldset disabled><legend>お問い合わせフォームの見本</legend>
+
+<div class="contact-layout">
+<section class="contact-panel" aria-labelledby="form-heading">
+<h2 id="form-heading">お問い合わせフォーム</h2>
+<p class="contact-panel-intro">受付開始後の入力項目を、見本として掲載しています。</p>
+<details class="form-preview">
+<summary><span>入力項目を見る<span class="preview-label">見本</span></span><span class="index-toggle" aria-hidden="true"></span></summary>
+<div class="contact-preview-body">
+<!-- 受付開始までは form 要素を置かない。無効化の解除だけで、個人情報が URL に送られることを防ぐ。
+     送信先・個人情報の取り扱い・迷惑送信対策を決め、送信処理と結果表示を接続してから受付を開始する。 -->
+<fieldset disabled aria-describedby="contact-status">
+<legend class="sr-only">お問い合わせフォームの見本（入力・送信不可）</legend>
+<section class="contact-group" aria-labelledby="reply-heading">
+<h3 id="reply-heading">返信先</h3>
 <div class="contact-field">
-<label for="contact-name">お名前 <span class="required-label">必須</span>
-</label>
+<label for="contact-name">お名前 <span class="required-label">必須</span></label>
 <input id="contact-name" name="name" autocomplete="name" maxlength="100" required />
 </div>
 <div class="contact-field">
-<label for="contact-email">返信先メールアドレス <span class="required-label">必須</span>
-</label>
+<label for="contact-email">返信先メールアドレス <span class="required-label">必須</span></label>
 <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required />
 </div>
+<p class="field-help">お子さまからのご相談は、保護者の方と一緒にお願いします。</p>
+</section>
+
+<section class="contact-group" aria-labelledby="event-heading">
+<h3 id="event-heading">参加したワークショップ</h3>
+<p class="field-help" id="event-help">イベント名や参加日は、分かる範囲で構いません。</p>
 <div class="contact-field">
-<label for="contact-event">参加したイベント・会場 <span class="optional-label">任意</span>
-</label>
-<p class="field-help" id="event-help">イベント名や会場名など、分かる範囲でご記入ください。</p>
+<label for="contact-event">イベント・会場名 <span class="optional-label">任意</span></label>
 <input id="contact-event" name="event" maxlength="200" aria-describedby="event-help" />
 </div>
 <div class="contact-field">
-<label for="contact-date">参加日 <span class="optional-label">任意</span>
-</label>
-<input id="contact-date" name="event_date" type="date" />
+<label for="contact-date">参加日 <span class="optional-label">任意</span></label>
+<input id="contact-date" name="event_date" type="date" aria-describedby="event-help" />
 </div>
-<div class="contact-field">
-<label for="contact-message">ご質問・ご相談 <span class="required-label">必須</span>
-</label>
-<p class="field-help" id="message-help">甲虫の種類や、どの作業で困っているかなどをお書きください。種類が分からない場合は、分かる範囲で構いません。</p>
-<textarea id="contact-message" name="message" rows="8" maxlength="5000" required aria-describedby="message-help">
-</textarea>
-</div>
-<button class="button contact-submit" type="submit" disabled>送信する（受付準備中）</button>
-</fieldset>
-</form>
-</details>
-<p><a href="beginner.html#help">作業中の困りごとを確認する →</a></p>
 </section>
+
+<section class="contact-group" aria-labelledby="message-heading">
+<h3 id="message-heading">ご質問・ご相談</h3>
+<div class="contact-field">
+<label for="contact-message">相談内容 <span class="required-label">必須</span></label>
+<p class="field-help" id="message-help">どの作業で困っているか、標本が今どんな状態かをお書きください。甲虫の種類は、分かれば添えてください。</p>
+<textarea id="contact-message" name="message" rows="7" maxlength="5000" required aria-describedby="message-help"></textarea>
+</div>
+</section>
+<button class="button contact-submit" type="button" disabled>受付準備中</button>
+</fieldset>
+</div>
+</details>
+</section>
+
+<aside class="contact-reference" aria-labelledby="contact-guide-heading">
+<h2 id="contact-guide-heading">ガイドで確認できること</h2>
+<nav aria-label="相談内容に関連するガイド">
+<a href="beginner.html#help"><span><strong>作業中に困ったとき</strong><span>足が動かない、固定の仕方で迷ったときに。</span></span><span aria-hidden="true">→</span></a>
+<a href="beginner.html#dry"><span><strong>乾燥・保管について</strong><span>形を整えたあとの乾かし方と保管方法。</span></span><span aria-hidden="true">→</span></a>
+<a href="beginner.html#questions"><span><strong>標本づくりの疑問</strong><span>「足が取れたら、失敗？」「どうして固定したまま乾かすの？」など。</span></span><span aria-hidden="true">→</span></a>
+</nav>
+</aside>
+</div>
+
+<nav class="contact-bottom-nav" aria-label="ページの移動">
+<a href="index.html#choose-guide">← ガイド一覧へ</a>
+<a href="#page-top">ページの上へ戻る ↑</a>
+</nav>
 
 </main>
 

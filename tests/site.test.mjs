@@ -69,14 +69,32 @@ test('softening branches converge and return via tools instead of skipping prepa
   assert.ok(html.indexOf('id="steam-method"') > html.indexOf('id="after-softening"'));
 });
 
-test('contact is a disabled preview, with one shared unavailable status', () => {
+test('contact is a disabled preview with no submission path and one shared unavailable status', () => {
   const html = page('contact');
-  assert.match(html, /<fieldset disabled>/);
-  assert.match(html, /type="submit" disabled/);
+  const main = html.match(/<main\b[\s\S]*?<\/main>/)[0].replace(/<!--[\s\S]*?-->/g, '');
+  assert.match(main, /<fieldset disabled aria-describedby="contact-status">/);
+  assert.match(main, /type="button" disabled/);
+  assert.doesNotMatch(main, /<form\b|\bform=|\bformaction=|type="submit"|送信しました/);
   assert.doesNotMatch(html, /「必須」の項目を入力/);
-  const disabledFields = html.match(/<fieldset disabled>[\s\S]*?<\/fieldset>/)[0];
+  const disabledFields = main.match(/<fieldset disabled\b[^>]*>[\s\S]*?<\/fieldset>/)[0];
   assert.equal((disabledFields.match(/<(?:input|textarea)\b/g) || []).length, 5);
+  assert.equal((main.match(/<(?:input|textarea)\b/g) || []).length, 5);
+  assert.equal((disabledFields.match(/<(?:input|textarea)\b[^>]*\srequired(?:\s|\/?>)/g) || []).length, 3);
+  for (const id of ['contact-event', 'contact-date']) assert.doesNotMatch(main.match(new RegExp('<input id="' + id + '"[^>]*>'))[0], /\brequired\b/);
+  assert.ok(main.indexOf('id="contact-status"') < main.indexOf('class="form-preview"'));
   for (const slug of ['beginner', 'intermediate', 'adults', 'softening', 'contact']) assert.ok(page(slug).includes(contactStatus));
+});
+
+test('contact separates the form preview from optional guide links and retains return paths', () => {
+  const html = page('contact');
+  assert.match(html, /<body class="article-page contact-route">/);
+  assert.match(html, /<header class="lesson-intro">/);
+  assert.match(html, /<details class="form-preview">/);
+  assert.equal((html.match(/class="contact-group"/g) || []).length, 3);
+  assert.doesNotMatch(html, /class="workflow-nav"|class="participant-contact"|contact-intro|contact-panel paper/);
+  const reference = html.match(/<aside class="contact-reference"[\s\S]*?<\/aside>/)[0];
+  for (const id of ['help', 'dry', 'questions']) assert.ok(reference.includes('href="beginner.html#' + id + '"'));
+  assert.match(html, /class="contact-bottom-nav"[\s\S]*?href="index.html#choose-guide"[\s\S]*?href="#page-top"/);
 });
 
 test('all documents have balanced explicit tags and valid accessibility references', () => {
