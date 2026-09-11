@@ -27,20 +27,49 @@ document.addEventListener('keydown', event => {
   }
 });
 
-function revealAnchor() {
+const softeningMethods = [...document.querySelectorAll('.softening-method')];
+function closeOtherMethods(selected) {
+  for (const method of softeningMethods) {
+    if (method !== selected) method.open = false;
+  }
+}
+// The name attribute groups native disclosures; this also covers older browsers.
+for (const method of softeningMethods) {
+  method.addEventListener('toggle', () => {
+    if (method.open) closeOtherMethods(method);
+  });
+}
+
+function revealAnchor(hash = location.hash) {
   let id;
-  try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+  try { id = decodeURIComponent(hash.slice(1)); } catch { return; }
   const target = id && document.getElementById(id);
   if (!target) return;
-  let ancestor = target;
+  // A method's published anchor is on the section surrounding its disclosure.
+  let ancestor = target.querySelector(':scope > .softening-method') || target;
   let opened = false;
   while (ancestor) {
-    if (ancestor instanceof HTMLDetailsElement && !ancestor.open) { ancestor.open = true; opened = true; }
+    if (ancestor instanceof HTMLDetailsElement) {
+      if (softeningMethods.includes(ancestor)) closeOtherMethods(ancestor);
+      if (!ancestor.open) { ancestor.open = true; opened = true; }
+    }
     ancestor = ancestor.parentElement;
   }
   if (opened) target.scrollIntoView({ block: 'start' });
+  return target;
 }
-window.addEventListener('hashchange', revealAnchor);
+window.addEventListener('hashchange', () => revealAnchor());
+// Reopen a selected method even if its URL hash has not changed since it was closed.
+document.addEventListener('click', event => {
+  if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  const link = event.target.closest('a[href]');
+  if (!link) return;
+  const url = new URL(link.href, location.href);
+  if (url.origin !== location.origin || url.pathname !== location.pathname || url.search !== location.search || !url.hash) return;
+  const target = revealAnchor(url.hash);
+  const summary = target?.querySelector(':scope > .softening-method > summary');
+  summary?.focus({ preventScroll: true });
+});
 revealAnchor();
 
 // A sidebar on wide screens; a native, initially collapsed contents list on phones.
@@ -57,10 +86,10 @@ if (lessonIndex) {
     if (!target) return;
     lessonIndex.open = false;
     // Move keyboard focus out of the collapsed contents without changing browser history.
-    const heading = target.querySelector('h2');
-    if (heading) {
-      heading.setAttribute('tabindex', '-1');
-      heading.focus({ preventScroll: true });
+    const destination = target.querySelector(':scope > .softening-method > summary') || target.querySelector('h2');
+    if (destination) {
+      if (destination.tagName !== 'SUMMARY') destination.setAttribute('tabindex', '-1');
+      destination.focus({ preventScroll: true });
     }
   });
 }

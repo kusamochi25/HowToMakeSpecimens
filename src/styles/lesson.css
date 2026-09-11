@@ -71,7 +71,7 @@
 .lesson-help ul { margin-bottom: 0; }
 .lesson-bottom-nav { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; padding-top: 24px; }
 .lesson-bottom-nav a { display: inline-flex; align-items: center; min-height: 48px; }
-:is(.beginner-guide, .intermediate-guide, .adults-guide, .softening-guide) > .participant-contact { margin-left: 268px; }
+.lesson-content > .participant-contact { border-bottom: 1px solid var(--line); }
 :is(.intermediate-guide, .adults-guide, .softening-guide) .lesson-intro .section-context { max-width: 48em; margin: 20px 0 0; font-size: .9375rem; }
 .reference-topic { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr); gap: 24px; padding-block: 26px; border-top: 1px solid var(--line); }
 .reference-topic > h3 { margin: 0; }
@@ -96,6 +96,13 @@
 .softening-guide .callout { border: 0; background: #f5f6f3; }
 .softening-guide .method-exit { margin-top: 28px; margin-bottom: 0; }
 .softening-guide .method-conditions { margin-bottom: 24px; }
+.softening-method > summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 64px; padding-block: 16px; list-style: none; cursor: pointer; }
+.softening-method > summary::-webkit-details-marker { display: none; }
+.softening-method > summary h2 { min-width: 0; font-size: clamp(1.5rem, 2.5vw, 1.85rem); font-weight: 500; line-height: 1.55; }
+.softening-method[open] > summary { border-bottom: 1px solid var(--line); }
+.softening-method > summary::after { content: ""; flex: none; width: 10px; height: 10px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); margin: -5px 5px 0 0; }
+.softening-method[open] > summary::after { transform: rotate(225deg); margin-top: 5px; }
+.softening-method-body { padding-top: 24px; }
 @media (min-width: 1100px) {
   .lesson-index { max-height: calc(100dvh - 48px); overflow-y: auto; }
 }
@@ -104,7 +111,6 @@
   .lesson-sidebar { position: static; margin-bottom: 32px; }
   .lesson-index { background: #f5f6f3; padding-inline: 20px; }
   .lesson-index .workflow-nav a { background: transparent; }
-  :is(.beginner-guide, .intermediate-guide, .adults-guide, .softening-guide) > .participant-contact { margin-left: 0; }
 }
 @media (max-width: 760px) {
   :is(.beginner-page, .intermediate-page, .adults-page, .softening-page) .page-return,

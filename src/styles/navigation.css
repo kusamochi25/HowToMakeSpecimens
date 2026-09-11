@@ -39,7 +39,6 @@
 .participant-contact { margin-top: 32px; padding-block: 24px; border-top: 1px solid var(--line); }
 .participant-contact a { display: inline-flex; align-items: center; min-height: 48px; padding: 10px 16px; border: 1px solid var(--leaf); background: var(--paper); font-weight: 700; text-decoration: none; }
 .participant-contact p { margin: 10px 0 0; }
-.participant-contact-status { font-size: .875rem; color: var(--muted); }
 .site-footer { width: 100%; margin: 0; padding-block: 22px 30px; border-top: 1px solid var(--line); color: var(--muted); font-size: .875rem; }
 .footer-inner { width: min(1208px, calc(100% - 64px)); margin-inline: auto; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: start; gap: 30px; }
 .footer-brand { font-size: 1rem; }

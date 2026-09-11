@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { runInNewContext } from 'node:vm';
 import { renderSite, validateSite } from '../scripts/build.mjs';
-import { pages, workflow, intermediateTopics, adultTopics, softeningTopics, scope, contactStatus } from '../src/site.mjs';
+import { pages, workflow, intermediateTopics, adultTopics, softeningTopics, scope, contactStatus, contactLinkLabel, questionsLabel, homePreparationLabel } from '../src/site.mjs';
 import { expandContent } from '../src/components/layout.mjs';
 import { media } from '../src/media.mjs';
 import { mediaSlot } from '../src/components/media.mjs';
@@ -82,7 +83,8 @@ test('contact is a disabled preview with no submission path and one shared unava
   assert.equal((disabledFields.match(/<(?:input|textarea)\b[^>]*\srequired(?:\s|\/?>)/g) || []).length, 3);
   for (const id of ['contact-event', 'contact-date']) assert.doesNotMatch(main.match(new RegExp('<input id="' + id + '"[^>]*>'))[0], /\brequired\b/);
   assert.ok(main.indexOf('id="contact-status"') < main.indexOf('class="form-preview"'));
-  for (const slug of ['beginner', 'intermediate', 'adults', 'softening', 'contact']) assert.ok(page(slug).includes(contactStatus));
+  assert.ok(html.includes(contactStatus));
+  for (const item of pages) assert.ok(page(item.slug).includes(contactLinkLabel));
 });
 
 test('contact separates the form preview from optional guide links and retains return paths', () => {
@@ -173,6 +175,7 @@ test('beginner lesson pairs instructions and photos, with one native contents an
     assert.match(contents, new RegExp('href="#' + step.id + '"'));
     assert.ok(contents.includes(step.label));
   }
+  assert.match(contents, /href="#enjoy">作った標本を楽しもう/);
   assert.equal((html.match(/class="lesson-chapter"/g) || []).length, 5);
   assert.equal((html.match(/class="lesson-media-row"/g) || []).length, 6);
   assert.equal((html.match(/data-media-slot=/g) || []).length, 6);
@@ -237,10 +240,100 @@ test('home preparation uses its own contents, explicit method choices and a shar
   assert.match(choices, /両方を続けて行う手順ではありません/);
   for (const [start, end, photo] of [['paper-method', 'water-method', 'softening-paper'], ['water-method', 'ready-check', 'softening-water']]) {
     const method = html.slice(html.indexOf('id="' + start + '"'), html.indexOf('id="' + end + '"'));
+    assert.match(method, /<details class="softening-method" name="softening-method">/);
     assert.ok(method.indexOf('data-media-slot="' + photo + '"') < method.indexOf('class="softening-steps"'));
     const exit = method.match(/<nav class="method-exit lesson-actions"[\s\S]*?<\/nav>/)[0];
     assert.match(exit, /href="#ready-check"/);
     assert.doesNotMatch(exit, /href="#(?:paper|water)-method"/);
   }
   assert.match(html, /class="lesson-bottom-nav"[\s\S]*?href="index.html#choose-guide"[\s\S]*?href="#page-top"/);
+});
+
+test('shared destinations keep consistent names and contact comes before the final page navigation', () => {
+  for (const item of pages) {
+    const html = page(item.slug);
+    for (const [destination, label] of [['contact.html', contactLinkLabel], ['beginner.html#questions', questionsLabel], ['softening.html', homePreparationLabel]]) {
+      const footer = html.match(/<nav class="footer-nav"[\s\S]*?<\/nav>/)[0];
+      const links = [...footer.matchAll(/<a href="([^"]+)"[^>]*>(.*?)<\/a>/g)];
+      assert.equal(links.find(link => link[1] === destination)?.[2], label);
+    }
+    if (['index', 'contact'].includes(item.slug)) continue;
+    const main = html.match(/<main\b[\s\S]*?<\/main>/)[0];
+    const contactPosition = main.indexOf('<aside class="participant-contact"');
+    const navigationPosition = main.indexOf('<nav class="lesson-bottom-nav"');
+    assert.ok(contactPosition > main.indexOf('<article class="lesson-content"'));
+    assert.ok(contactPosition < navigationPosition);
+    assert.equal((main.match(/class="participant-contact"/g) || []).length, 1);
+    assert.doesNotMatch(main.slice(navigationPosition), /<aside|<section/);
+  }
+});
+
+test('method links open only their selected disclosure, including unchanged hashes and nested bookmarks', () => {
+  const documentEvents = new Map();
+  const windowEvents = new Map();
+  class Details {
+    open = false;
+    parentElement = null;
+    events = new Map();
+    addEventListener(name, handler) { this.events.set(name, handler); }
+    querySelector() { return null; }
+  }
+  const paper = new Details();
+  const water = new Details();
+  const summary = { focus() {} };
+  const section = method => ({
+    parentElement: null,
+    scrolls: 0,
+    querySelector(selector) { return selector.endsWith('> summary') ? summary : method; },
+    scrollIntoView() { this.scrolls++; }
+  });
+  const paperSection = section(paper);
+  const waterSection = section(water);
+  paper.parentElement = paperSection;
+  water.parentElement = waterSection;
+  const child = { parentElement: paper, querySelector() { return null; }, scrollIntoView() {} };
+  const anchors = new Map([['paper-method', paperSection], ['water-method', waterSection], ['ready-check', section(null)], ['nested-bookmark', child]]);
+  const location = { href: 'https://guide.example/softening.html', origin: 'https://guide.example', pathname: '/softening.html', search: '', hash: '#ready-check' };
+  const document = {
+    querySelector() { return null; },
+    querySelectorAll(selector) { return selector === '.softening-method' ? [paper, water] : []; },
+    getElementById(id) { return anchors.get(id); },
+    addEventListener(name, handler) { documentEvents.set(name, [...(documentEvents.get(name) || []), handler]); }
+  };
+  runInNewContext(site.get('site.js').replace(/^import[^\n]*\n/, ''), {
+    document, location, URL, HTMLDetailsElement: Details,
+    window: { addEventListener(name, handler) { windowEvents.set(name, handler); } }
+  });
+  assert.equal(paper.open || water.open, false, 'readiness link does not expand either method');
+  const navigate = hash => { location.hash = hash; windowEvents.get('hashchange')(); };
+  navigate('#paper-method');
+  assert.equal(paper.open, true);
+  assert.equal(water.open, false);
+  navigate('#water-method');
+  assert.equal(paper.open, false);
+  assert.equal(water.open, true);
+  assert.ok(waterSection.scrolls > 0);
+  water.open = false;
+  const click = (overrides, href = location.hash) => {
+    const event = { button: 0, target: { closest: () => ({ href }) }, ...overrides };
+    for (const handler of documentEvents.get('click')) handler(event);
+  };
+  click({ ctrlKey: true });
+  assert.equal(water.open, false, 'opening a link in another tab does not change this page');
+  click();
+  assert.equal(water.open, true, 'the same hash reopens a manually closed method');
+  water.open = false;
+  click({}, 'softening.html#water-method');
+  assert.equal(water.open, true, 'a search result with a full page path reopens the same method');
+  water.open = false;
+  click({}, 'https://elsewhere.example/softening.html#water-method');
+  assert.equal(water.open, false, 'other sites do not change the local disclosure');
+  navigate('#nested-bookmark');
+  assert.equal(paper.open, true);
+  assert.equal(water.open, false);
+  water.open = true;
+  water.events.get('toggle')();
+  assert.equal(paper.open, false, 'manual expansion closes the other method in older browsers');
+  assert.doesNotThrow(() => navigate('#%broken'));
+  assert.doesNotThrow(() => navigate('#not-present'));
 });
