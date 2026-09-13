@@ -4,6 +4,7 @@ import { resolve } from 'node:path';
 import { pages } from '../src/site.mjs';
 import { layout } from '../src/components/layout.mjs';
 import { createSearchIndex } from '../src/search-index.mjs';
+import { faviconSvg, faviconIco } from '../src/favicon.mjs';
 
 export const root = fileURLToPath(new URL('../', import.meta.url));
 export async function renderSite() {
@@ -16,6 +17,8 @@ export async function renderSite() {
   output.set('site.js', await readFile(resolve(root, 'src/browser/site.js'), 'utf8'));
   output.set('search.js', await readFile(resolve(root, 'src/browser/search.mjs'), 'utf8'));
   output.set('search-index.json', JSON.stringify(createSearchIndex(pages, output), null, 2) + '\n');
+  output.set('favicon.svg', faviconSvg);
+  output.set('favicon.ico', faviconIco());
   return output;
 }
 
@@ -50,7 +53,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   for (const [file, content] of output) {
     const path = resolve(root, 'public', file);
     if (check) {
-      if (await readFile(path, 'utf8') !== content) throw new Error(`${file} is stale. Run npm run build.`);
+      if (!(await readFile(path)).equals(Buffer.from(content))) throw new Error(`${file} is stale. Run npm run build.`);
     } else await writeFile(path, content);
   }
   console.log(`${check ? 'Checked' : 'Built'} ${pages.length} pages; internal links and anchors validated.`);

@@ -41,7 +41,7 @@ main, .site-header, .site-footer { width: min(1160px, calc(100% - 40px)); margin
 .guide-intro { padding: clamp(24px, 5vw, 48px); margin: 16px 0 32px; }
 .lead { max-width: 42em; margin: 16px 0 0; font-size: 1rem; }
 .scope-inline { color: var(--muted); font-size: .875rem; margin: 14px 0 0; }
-.eyebrow, .card-number, .flow-step, .step-label, .note-mark { color: var(--leaf); font-size: .875rem; font-weight: 800; margin: 0 0 8px; }
+.eyebrow, .flow-step, .step-label, .note-mark { color: var(--leaf); font-size: .875rem; font-weight: 800; margin: 0 0 8px; }
 .guide-intro { border: 0; border-bottom: 1px solid var(--line); padding-inline: 0; }
 .guide-intro.beginner, .guide-intro.intermediate, .guide-intro.adults, .guide-intro.softening { border-top: 0; }
 .section, .content-section { margin-bottom: 48px; }

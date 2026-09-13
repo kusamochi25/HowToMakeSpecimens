@@ -55,6 +55,8 @@ export function layout(page, source) {
 <meta name="robots" content="noindex" />
 <meta name="description" content="${escapeHtml(page.description)}" />
 <title>${escapeHtml(page.title || `${page.label}｜昆虫標本ガイド`)}</title>
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" sizes="any" />
 <link rel="stylesheet" href="styles.css" />
 <script type="module" src="site.js"></script>
 </head>

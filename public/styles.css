@@ -42,7 +42,7 @@ main, .site-header, .site-footer { width: min(1160px, calc(100% - 40px)); margin
 .guide-intro { padding: clamp(24px, 5vw, 48px); margin: 16px 0 32px; }
 .lead { max-width: 42em; margin: 16px 0 0; font-size: 1rem; }
 .scope-inline { color: var(--muted); font-size: .875rem; margin: 14px 0 0; }
-.eyebrow, .card-number, .flow-step, .step-label, .note-mark { color: var(--leaf); font-size: .875rem; font-weight: 800; margin: 0 0 8px; }
+.eyebrow, .flow-step, .step-label, .note-mark { color: var(--leaf); font-size: .875rem; font-weight: 800; margin: 0 0 8px; }
 .guide-intro { border: 0; border-bottom: 1px solid var(--line); padding-inline: 0; }
 .guide-intro.beginner, .guide-intro.intermediate, .guide-intro.adults, .guide-intro.softening { border-top: 0; }
 .section, .content-section { margin-bottom: 48px; }
@@ -270,8 +270,7 @@ section[id], details[id] { scroll-margin-top: 20px; }
 .home-guide-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
 .home-guide-card { display: grid; grid-template-columns: minmax(0, 1fr) 30px; grid-template-rows: auto auto 1fr; grid-template-areas: "heading heading" "photo photo" "description arrow"; gap: 10px; align-items: start; min-width: 0; padding: 14px; border: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: border-color .15s, background-color .15s; }
 .home-guide-card:hover { border-color: var(--leaf); background: #f7f8f5; }
-.card-heading { grid-area: heading; display: flex; align-items: center; gap: 12px; min-width: 0; }
-.card-heading .card-number { flex: none; color: var(--ink); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 2rem; line-height: 1; font-weight: 400; margin: 0; }
+.card-heading { grid-area: heading; min-width: 0; }
 .card-heading h3 { font-size: 1rem; font-weight: 500; letter-spacing: .03em; }
 .home-guide-card > p { grid-area: description; margin: 0; font-size: 1rem; line-height: 1.7; }
 .card-arrow { grid-area: arrow; align-self: end; display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid #68786e; border-radius: 50%; line-height: 1; font-size: 1.15rem; margin-bottom: 3px; }
@@ -302,8 +301,7 @@ section[id], details[id] { scroll-margin-top: 20px; }
   .ruled-heading p { flex-basis: 100%; }
   .home-guide-grid { grid-template-columns: 1fr; gap: 10px; }
   .home-guide-card { padding: 12px; grid-template-columns: minmax(86px, 30%) minmax(0, 1fr) 28px; grid-template-rows: auto auto; grid-template-areas: "photo heading arrow" "photo description arrow"; gap: 5px 12px; align-items: center; }
-  .card-heading { gap: 9px; align-self: end; }
-  .card-heading .card-number { font-size: 1.5rem; }
+  .card-heading { align-self: end; }
   .card-heading h3 { font-size: 1rem; }
   .home-guide-card > p { align-self: start; font-size: 1rem; }
   .media-slot--card { align-self: center; }

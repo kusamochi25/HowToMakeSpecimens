@@ -116,7 +116,30 @@ test('all documents have balanced explicit tags and valid accessibility referenc
       for (const ref of refs.split(/\s+/)) assert.ok(ids.has(ref), item.slug + ': ' + ref);
     }
     assert.match(html, /name="robots" content="noindex"/);
+    assert.doesNotMatch(html, /GUIDE 0[1-4]|class="card-number"/);
     assert.ok(html.includes(scope));
+  }
+});
+
+test('every page declares the shared SVG icon with a multi-size ICO fallback', () => {
+  for (const item of pages) {
+    assert.match(page(item.slug), /rel="icon" href="favicon\.svg" type="image\/svg\+xml" sizes="any"/);
+    assert.match(page(item.slug), /rel="icon" href="favicon\.ico" sizes="16x16 32x32"/);
+  }
+  assert.match(site.get('favicon.svg'), /<svg[^>]*viewBox="0 0 16 16"/);
+  const ico = site.get('favicon.ico');
+  assert.equal(ico.readUInt16LE(0), 0);
+  assert.equal(ico.readUInt16LE(2), 1);
+  assert.equal(ico.readUInt16LE(4), 2);
+  for (const [i, size] of [16, 32].entries()) {
+    const entry = 6 + 16 * i;
+    const offset = ico.readUInt32LE(entry + 12);
+    const length = ico.readUInt32LE(entry + 8);
+    assert.equal(ico[entry], size);
+    assert.equal(ico[entry + 1], size);
+    assert.ok(offset + length <= ico.length);
+    assert.equal(ico.readUInt32LE(offset + 4), size);
+    assert.equal(ico.readUInt32LE(offset + 8), size * 2);
   }
 });
 
