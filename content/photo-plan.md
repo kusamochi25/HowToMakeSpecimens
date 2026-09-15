@@ -43,7 +43,7 @@ src が null の間は画像リクエストを行わない。読み込みに失�
 | finish-front | beginner#finish | 大顎と前脚を正面から見た写真 |
 | finish-side | beginner#finish | 大顎と脚先を横から見た写真 |
 | finish-rear | beginner#finish | 後脚と跗節を後ろから見た写真 |
-| drying | beginner#dry | 乾燥中のケースと通気 |
+| drying | beginner#dry | 固定した作業台をケースに入れ、ふたを開けて乾かす様子 |
 | label | beginner#label | 採集情報と制作情報、標本との対応 |
 | softening-paper | softening#paper-method | 湿った紙と乾いた小皿を隔てた配置 |
 | softening-water | softening#water-method | 体を下からすくって取り出す手元 |
