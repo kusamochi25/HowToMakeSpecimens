@@ -17,6 +17,8 @@ export const media = {
   'jaw-fixation': { src: 'images/guides/beginner/jaw-fixation.webp', label: '大顎を支えた写真', alt: 'からだを固定したあと、大顎のまわりに針を立てたクワガタ', width: 1200, height: 1200, caption: '次に、大顎の向きを支える' },
   legs: { src: 'images/guides/beginner/legs.webp', label: '脚の位置を整える写真', alt: '作業台に固定したクワガタの六本の脚を、針で支えながら整えている全体写真', width: 1200, height: 1200, caption: '脚の位置を整えている全体の様子' },
   'legs-closeup': { src: 'images/guides/beginner/legs-closeup.webp', label: '脚の位置の拡大写真', alt: 'クワガタのからだの近くの脚と、作業台に立てた針を拡大した写真', width: 1200, height: 1200, caption: '脚と針の位置を近くで見たところ' },
+  tarsi: { src: 'images/guides/beginner/tarsi.webp', label: '跗節を整える写真', alt: '作業台に固定したクワガタの脚先の跗節を、周りに立てた針で支えている写真', width: 1200, height: 1200, caption: '腿節と脛節を整えたあと、跗節の向きを決める' },
+  'tarsi-closeup': { src: 'images/guides/beginner/tarsi-closeup.webp', label: '後脚の跗節の拡大写真', alt: 'クワガタの後脚の跗節と爪を、作業台に立てた針とともに近くで写した写真', width: 1200, height: 1200, caption: '後脚の跗節を近くで見たところ' },
   antennae: { src: null, label: '触角を整える手元写真', alt: '触角の付け根に近い部分を支えて整える様子', width: 1000, height: 650 },
   drying: { src: null, label: '乾燥中のケースの写真', alt: '固定した甲虫をケースで乾かす配置', width: 1000, height: 650 },
   label: { src: null, label: 'ラベルの写真', alt: '採集と制作の情報を区別したラベルと標本の対応', width: 1000, height: 650 },
