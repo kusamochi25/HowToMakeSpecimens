@@ -1,7 +1,7 @@
 # 自前写真の差し替え
 
 トップは添付レイアウトに合わせて、メイン写真 1 枠・ガイドカード 4 枠を用意した。
-手順ページには、水気を取る写真・道具・体高・固定・足・触角・乾燥・ラベル・軟化 2 方法・配置比較の 11 枠を置いた。
+手順ページには、水気を取る写真・道具・体高・くぼみの工程 2 枚・固定・足・触角・乾燥・ラベル・軟化 2 方法・配置比較の 13 枠を置いた。
 すべて同じ仕組みで管理する。画像未登録時の枠は、今回の依頼で意図的に表示している。
 
 ## 差し替え手順
@@ -28,6 +28,8 @@ src が null の間は画像リクエストを行わない。読み込みに失�
 | tools | beginner#tools | 今回使う 7 種類の道具と名前 |
 | surface-drying | beginner#surface-drying | 軟化後の甲虫を吸水用の紙の上に置いた様子 |
 | body-height | beginner#body-height | 作業台に置いたクワガタの体の厚みを横から見る |
+| recess-mark | beginner#board-recess | 昆虫針でくぼみの位置に印を付けた作業台 |
+| recess-made | beginner#board-recess | カッターでくぼみを作った作業台 |
 | fixation | beginner#fix | バンド・針・作業台の位置関係 |
 | legs | beginner#legs | 足を支えるピンセットと保持方法 |
 | antennae | beginner#antennae | 触角を支える位置と保持方法 |

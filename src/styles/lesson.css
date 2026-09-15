@@ -60,6 +60,8 @@
 .lesson-task { padding-block: 28px; border-top: 1px solid var(--line); }
 .lesson-task > h3 { margin-top: 0; }
 .lesson-task .lesson-media-row { margin-block: 0; }
+.lesson-task .recess-step + .recess-step { margin-top: 28px; }
+.lesson-content .recess-step h4 { font-size: 1rem; line-height: 1.6; margin: 0 0 8px; }
 .lesson-task:last-child { padding-bottom: 0; }
 .lesson-content .label-example { border: 0; border-left: 2px solid var(--moss); background: #f5f6f3; padding: 16px 20px; margin-top: 0; }
 .lesson-reading { margin-top: 40px; }
