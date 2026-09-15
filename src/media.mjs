@@ -11,6 +11,8 @@ export const media = {
   'body-height': { src: 'images/guides/beginner/body-height.webp', label: 'クワガタの体高の写真', alt: '横から見たクワガタのからだの厚みと脚', width: 1200, height: 1200 },
   'recess-mark': { src: 'images/guides/beginner/recess-mark.webp', label: 'くぼみの位置を決める写真', alt: 'クワガタの体のそばにピンでくぼみの位置を示した作業台', width: 1200, height: 1200, caption: '作業台にくぼみの位置を付けたところ' },
   'recess-made': { src: 'images/guides/beginner/recess-made.webp', label: 'くぼみを作った写真', alt: 'クワガタのそばにくぼみを作ったスタイロフォームの作業台', width: 1200, height: 1200, caption: 'くぼみを作ったあとの作業台' },
+  'legs-open': { src: 'images/guides/beginner/legs-open.webp', label: '脚をひろげた写真', alt: 'おなか側から見た、脚をひろげたクワガタ', width: 1200, height: 1200, caption: 'おなか側から見た、脚をひろげた状態' },
+  'body-in-recess': { src: 'images/guides/beginner/body-in-recess.webp', label: 'くぼみに置いた写真', alt: '背中を上にして作業台のくぼみに置いたクワガタ', width: 1200, height: 1200, caption: '背中を上にして、くぼみに置いた状態' },
   fixation: { src: null, label: '固定方法の手元写真', alt: 'バンドと昆虫針と作業台の位置関係', width: 1000, height: 650 },
   legs: { src: null, label: '足を整える手元写真', alt: '足を支えるピンセットの位置', width: 1000, height: 650 },
   antennae: { src: null, label: '触角を整える手元写真', alt: '触角の付け根に近い部分を支えて整える様子', width: 1000, height: 650 },
