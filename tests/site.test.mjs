@@ -44,6 +44,8 @@ test('workflow has one numbering source and a single continuous procedure', () =
     return index;
   });
   assert.deepEqual(positions, [...positions].sort((a, b) => a - b));
+  const surfaceDrying = html.indexOf('id="surface-drying"');
+  assert.ok(positions[1] < surfaceDrying && surfaceDrying < html.indexOf('id="body-height"'), 'tools precede surface drying, which precedes positioning');
   assert.doesNotMatch(page('intermediate'), /STEP \d|class="tool-list"/);
   assert.doesNotMatch(page('softening'), /STEP 0|HOME FLOW|家庭でつくる順番/);
   assert.ok(html.indexOf('忘れないうちにメモ') < positions[1]);
@@ -65,7 +67,7 @@ test('softening branches converge and return via tools instead of skipping prepa
     assert.match(method, /class="next-step" href="#ready-check"/);
   }
   const next = html.slice(html.indexOf('id="after-softening"'));
-  assert.match(next, /href="beginner.html#tools"/);
+  assert.match(next, /class="next-step" href="beginner.html#tools"/);
   assert.match(next, /href="beginner.html#make-it"/);
   assert.ok(html.indexOf('id="steam-method"') > html.indexOf('id="after-softening"'));
 });
