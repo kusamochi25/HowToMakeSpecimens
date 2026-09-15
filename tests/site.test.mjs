@@ -149,7 +149,7 @@ test('four guide cards and the hero reserve five explicit photo slots on the hom
   assert.equal((html.match(/data-media-slot=/g) || []).length, 5);
   const renderedSlots = [...site.entries()].filter(([file]) => file.endsWith('.html')).flatMap(([, html]) => [...html.matchAll(/data-media-slot="([^"]+)"/g)].map(m => m[1]));
   assert.deepEqual(new Set(renderedSlots), new Set(Object.keys(media)));
-  assert.equal(renderedSlots.length, 15);
+  assert.equal(renderedSlots.length, 16);
   assert.doesNotMatch(html, /<img[^>]*src="(?:null|undefined|)"/);
 });
 
@@ -200,8 +200,8 @@ test('beginner lesson pairs instructions and photos, with one native contents an
   }
   assert.match(contents, /href="#enjoy">作った標本を楽しもう/);
   assert.equal((html.match(/class="lesson-chapter"/g) || []).length, 5);
-  assert.equal((html.match(/class="lesson-media-row"/g) || []).length, 7);
-  assert.equal((html.match(/data-media-slot=/g) || []).length, 7);
+  assert.equal((html.match(/class="lesson-media-row"/g) || []).length, 8);
+  assert.equal((html.match(/data-media-slot=/g) || []).length, 8);
   assert.match(html, /class="lesson-bottom-nav"[\s\S]*?href="index.html#choose-guide"[\s\S]*?href="#page-top"/);
   assert.match(html, /id="home-softening"[\s\S]*?href="softening.html"/);
   for (const slug of ['index', 'contact']) {

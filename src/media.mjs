@@ -8,6 +8,7 @@ export const media = {
   'card-home': { src: null, label: '軟化の写真', alt: '家庭で甲虫を軟化するための道具と配置', width: 800, height: 450 },
   tools: { src: 'images/guides/beginner/tools.webp', label: '使う道具の写真', alt: 'スタイロフォームの作業台など、今回使う七つの道具', width: 1200, height: 1200 },
   'surface-drying': { src: 'images/guides/beginner/surface-drying.webp', label: '軟化後の水気を取る写真', alt: '吸水用の紙の上に置いた軟化後の甲虫', width: 1200, height: 1200 },
+  'body-height': { src: 'images/guides/beginner/body-height.webp', label: 'クワガタの体高の写真', alt: '横から見たクワガタのからだの厚みと脚', width: 1200, height: 1200 },
   fixation: { src: null, label: '固定方法の手元写真', alt: 'バンドと昆虫針と作業台の位置関係', width: 1000, height: 650 },
   legs: { src: null, label: '足を整える手元写真', alt: '足を支えるピンセットの位置', width: 1000, height: 650 },
   antennae: { src: null, label: '触角を整える手元写真', alt: '触角の付け根に近い部分を支えて整える様子', width: 1000, height: 650 },
