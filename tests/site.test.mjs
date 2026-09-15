@@ -159,7 +159,7 @@ test('owned images receive dimensions and fallbacks; unknown assets cannot rende
   try {
     media.hero.src = 'images/home/hero.webp';
     const html = mediaSlot('hero', 'hero');
-    assert.match(html, /width="1600" height="1000"/);
+    assert.match(html, /width="1600" height="1200"/);
     assert.match(html, /fetchpriority="high"/);
     assert.match(html, /class="media-placeholder" hidden/);
     media.hero.src = 'https://external.invalid/photo.jpg';

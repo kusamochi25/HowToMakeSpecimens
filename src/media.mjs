@@ -1,7 +1,7 @@
 // Set src to a path below public (e.g. images/home/hero.webp) when an owned photo is ready.
 // A null src deliberately reserves the requested photo frame without requesting a missing file.
 export const media = {
-  hero: { src: null, label: 'メイン写真', alt: '甲虫の姿が分かるメイン写真', width: 1600, height: 1000, position: '65% 50%', caption: '' },
+  hero: { src: 'images/home/hero.webp', label: 'メイン写真', alt: '甲虫の姿が分かるメイン写真', width: 1600, height: 1200, position: '65% 50%', caption: '' },
   'card-beginner': { src: null, label: '道具の写真', alt: '標本制作に使う道具', width: 800, height: 450 },
   'card-intermediate': { src: null, label: '甲虫の写真', alt: '甲虫の頭と触角の細部', width: 800, height: 450 },
   'card-adults': { src: null, label: '標本とラベル', alt: '甲虫標本と採集情報のラベル', width: 800, height: 450 },
