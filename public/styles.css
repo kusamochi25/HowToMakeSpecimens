@@ -323,6 +323,8 @@ section[id], details[id] { scroll-margin-top: 20px; }
   .hero-copy .scope-inline { font-size: .875rem; }
   .hero-button { padding: 10px 12px; gap: 10px; font-size: 1rem; }
   .media-slot--hero { position: absolute; inset: 0 0 0 48%; z-index: -1; }
+  /* Keep the main beetle group visible beside the copy on narrow screens. */
+  .media-slot--hero img { object-position: 33% 50% !important; }
   .media-slot--hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #eff0ed 0%, transparent 38%); pointer-events: none; }
   .media-slot--hero .media-placeholder { inset: 20px 10px 20px 35%; text-align: right; padding: 8px; }
   .media-slot--hero .media-placeholder-label { writing-mode: vertical-rl; letter-spacing: .15em; }
