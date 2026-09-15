@@ -4,7 +4,7 @@ export const media = {
   hero: { src: 'images/home/hero.webp', label: 'メイン写真', alt: '甲虫の姿が分かるメイン写真', width: 1600, height: 1200, position: '65% 50%', caption: '' },
   'card-beginner': { src: null, label: '道具の写真', alt: '標本制作に使う道具', width: 800, height: 450 },
   'card-intermediate': { src: null, label: '甲虫の写真', alt: '甲虫の頭と触角の細部', width: 800, height: 450 },
-  'card-adults': { src: null, label: '標本とラベル', alt: '甲虫標本と採集情報のラベル', width: 800, height: 450 },
+  'card-adults': { src: 'images/home/card-adults.webp', label: '標本とラベル', alt: 'クワガタの標本と、種名・採集地・採集時期を書いたラベル', width: 1200, height: 900, position: '50% 25%' },
   'card-home': { src: null, label: '軟化の写真', alt: '家庭で甲虫を軟化するための道具と配置', width: 800, height: 450 },
   tools: { src: 'images/guides/beginner/tools.webp', label: '使う道具の写真', alt: 'スタイロフォームの作業台など、今回使う七つの道具', width: 1200, height: 1200 },
   'surface-drying': { src: 'images/guides/beginner/surface-drying.webp', label: '軟化後の水気を取る写真', alt: '吸水用の紙の上に置いた軟化後の甲虫', width: 1200, height: 1200 },
