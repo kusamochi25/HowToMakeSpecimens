@@ -21,8 +21,9 @@ export const pages = [
   { slug: 'contact', label: 'お問い合わせ', description: `ワークショップ参加者向けのお問い合わせ窓口。${contactStatus}` }
 ];
 export const workflow = [
-  { id: 'home-preparation', label: '甲虫の準備', short: '準備' },
   { id: 'tools', label: '道具をそろえる', short: '道具' },
+  { id: 'home-preparation', label: '甲虫を用意する', short: '甲虫の準備' },
+  { id: 'surface-drying', label: '水気を取る', short: '水気取り' },
   { id: 'make-it', label: '足と触角を整える', short: '形を整える' },
   { id: 'dry', label: '乾かして保管する', short: '乾燥・保管' },
   { id: 'label', label: 'ラベルを添える', short: 'ラベル' }

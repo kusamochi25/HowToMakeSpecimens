@@ -44,11 +44,17 @@ test('workflow has one numbering source and a single continuous procedure', () =
     return index;
   });
   assert.deepEqual(positions, [...positions].sort((a, b) => a - b));
-  const surfaceDrying = html.indexOf('id="surface-drying"');
-  assert.ok(positions[1] < surfaceDrying && surfaceDrying < html.indexOf('id="body-height"'), 'tools precede surface drying, which precedes positioning');
+  const expectedOrder = ['tools', 'home-preparation', 'surface-drying', 'make-it', 'dry', 'label'];
+  assert.deepEqual(workflow.map(step => step.id), expectedOrder, 'prepare tools, then the specimen, then remove surface water before positioning');
+  for (const [i, id] of expectedOrder.entries()) {
+    const chapter = html.slice(positions[i], positions[i + 1] ?? html.indexOf('id="enjoy"'));
+    const next = expectedOrder[i + 1] ?? 'enjoy';
+    assert.match(chapter, new RegExp('class="next-step" href="#' + next + '"'), id + ' must lead to the next chapter');
+    if (i > 0) assert.match(chapter, new RegExp('<a href="#' + expectedOrder[i - 1] + '">←'), id + ' must return to the previous chapter');
+  }
   assert.doesNotMatch(page('intermediate'), /STEP \d|class="tool-list"/);
   assert.doesNotMatch(page('softening'), /STEP 0|HOME FLOW|家庭でつくる順番/);
-  assert.ok(html.indexOf('忘れないうちにメモ') < positions[1]);
+  assert.ok(html.indexOf('忘れないうちにメモ') > positions[1] && html.indexOf('忘れないうちにメモ') < positions[2]);
   assert.match(html, /ラベルは、乾かしている間に用意しても/);
 });
 
@@ -60,15 +66,15 @@ test('tools and detailed drying instructions have one owner', () => {
   assert.match(page('adults'), /href="beginner.html#label"/);
 });
 
-test('softening branches converge and return via tools instead of skipping preparation', () => {
+test('softening branches converge and continue to surface drying after specimen preparation', () => {
   const html = page('softening');
   for (const [start, end] of [['paper-method', 'water-method'], ['water-method', 'ready-check']]) {
     const method = html.slice(html.indexOf('id="' + start + '"'), html.indexOf('id="' + end + '"'));
     assert.match(method, /class="next-step" href="#ready-check"/);
   }
   const next = html.slice(html.indexOf('id="after-softening"'));
-  assert.match(next, /class="next-step" href="beginner.html#tools"/);
-  assert.match(next, /href="beginner.html#make-it"/);
+  assert.match(next, /class="next-step" href="beginner.html#surface-drying"/);
+  assert.match(next, /href="beginner.html#tools"/);
   assert.ok(html.indexOf('id="steam-method"') > html.indexOf('id="after-softening"'));
 });
 
@@ -201,7 +207,7 @@ test('beginner lesson pairs instructions and photos, with one native contents an
     assert.ok(contents.includes(step.label));
   }
   assert.match(contents, /href="#enjoy">作った標本を楽しもう/);
-  assert.equal((html.match(/class="lesson-chapter"/g) || []).length, 5);
+  assert.equal((html.match(/class="lesson-chapter"/g) || []).length, workflow.length);
   assert.equal((html.match(/class="lesson-media-row(?: recess-step)?"/g) || []).length, 20);
   assert.equal((html.match(/data-media-slot=/g) || []).length, 20);
   assert.match(html, /id="legs"[\s\S]*?腿節（たいせつ）[\s\S]*?脛節（けいせつ）[\s\S]*?id="tarsi"[\s\S]*?跗節（ふせつ）/);
