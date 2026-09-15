@@ -14,5 +14,5 @@ export const media = {
   label: { src: null, label: 'ラベルの写真', alt: '採集と制作の情報を区別したラベルと標本の対応', width: 1000, height: 650 },
   'softening-paper': { src: null, label: '湿度容器の配置写真', alt: '湿った紙と乾いた小皿を隔てて甲虫を置いた容器', width: 1000, height: 650 },
   'softening-water': { src: null, label: 'お湯から取り出す手元写真', alt: '甲虫の体を下からすくって取り出す様子', width: 1000, height: 650 },
-  comparison: { src: null, label: '配置を見比べる写真', alt: '足や触角の配置による見え方の違い', width: 1200, height: 700 }
+  comparison: { src: 'images/guides/intermediate/comparison.webp', label: '配置を見比べる写真', alt: '昆虫標本の配置を見比べるための写真', width: 3781, height: 2836 }
 };
