@@ -32,6 +32,14 @@ export function expandContent(source, slug) {
     if (key.startsWith('media-')) return mediaSlot(key.slice(6));
     if (key === 'hero-photo') return mediaSlot('hero', 'hero');
     if (key.startsWith('card-photo-')) return mediaSlot('card-' + key.slice(11), 'card');
+    if (key.startsWith('step-actions-') && slug === 'beginner') {
+      const index = workflow.findIndex(step => step.id === key.slice(13));
+      if (index !== -1) {
+        const previous = workflow[index - 1];
+        const next = workflow[index + 1] ?? { id: 'enjoy', label: '作った標本を楽しむ' };
+        return `<div class="lesson-actions">${previous ? `<a href="#${previous.id}">← ${previous.label}手順に戻る</a>` : ''}<a class="next-step" href="#${next.id}">次へ：${next.label}</a></div>`;
+      }
+    }
     if (key.startsWith('step-')) {
       const index = workflow.findIndex(step => step.id === key.slice(5));
       if (index !== -1) return `<p class="flow-step">STEP ${index + 1}</p>`;

@@ -44,8 +44,9 @@ test('workflow has one numbering source and a single continuous procedure', () =
     return index;
   });
   assert.deepEqual(positions, [...positions].sort((a, b) => a - b));
-  const expectedOrder = ['tools', 'home-preparation', 'surface-drying', 'make-it', 'dry', 'label'];
+  const expectedOrder = ['tools', 'home-preparation', 'surface-drying', 'body-height', 'board-recess', 'open-legs', 'place', 'fix', 'legs', 'tarsi', 'antennae', 'finish', 'dry', 'label'];
   assert.deepEqual(workflow.map(step => step.id), expectedOrder, 'prepare tools, then the specimen, then remove surface water before positioning');
+  assert.doesNotMatch(html, /class="lesson-task"|<h2>足と触角を整えよう<\/h2>/);
   for (const [i, id] of expectedOrder.entries()) {
     const chapter = html.slice(positions[i], positions[i + 1] ?? html.indexOf('id="enjoy"'));
     const next = expectedOrder[i + 1] ?? 'enjoy';

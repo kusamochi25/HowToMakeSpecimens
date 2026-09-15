@@ -24,7 +24,15 @@ export const workflow = [
   { id: 'tools', label: '道具をそろえる', short: '道具' },
   { id: 'home-preparation', label: '甲虫を用意する', short: '甲虫の準備' },
   { id: 'surface-drying', label: '水気を取る', short: '水気取り' },
-  { id: 'make-it', label: '足と触角を整える', short: '形を整える' },
+  { id: 'body-height', label: 'からだの高さを見る', short: 'からだの高さ' },
+  { id: 'board-recess', label: '作業台にくぼみを作る', short: 'くぼみを作る' },
+  { id: 'open-legs', label: '閉じた脚をひろげる', short: '脚をひろげる' },
+  { id: 'place', label: 'くぼみに置く', short: 'くぼみに置く' },
+  { id: 'fix', label: 'からだと大顎を固定する', short: '固定する' },
+  { id: 'legs', label: '脚の位置を整える', short: '脚を整える' },
+  { id: 'tarsi', label: '跗節を整える', short: '跗節を整える' },
+  { id: 'antennae', label: '跗節と触角を一緒に見る', short: '触角を整える' },
+  { id: 'finish', label: 'ぐるっと確認する', short: '仕上げの確認' },
   { id: 'dry', label: '乾かして保管する', short: '乾燥・保管' },
   { id: 'label', label: 'ラベルを添える', short: 'ラベル' }
 ];

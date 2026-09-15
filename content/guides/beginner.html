@@ -25,7 +25,7 @@
           </div>
           {{ media-tools }}
         </div>
-        <div class="lesson-actions"><a class="next-step" href="#home-preparation">次へ：甲虫を用意する</a></div>
+        {{ step-actions-tools }}
       </section>
 
       <section class="lesson-chapter" id="home-preparation">
@@ -43,7 +43,7 @@
           <p>軟化ができたら、このページの<a href="#surface-drying">「水気を取ろう」</a>に戻って作業を続けます。</p>
         </details>
         <p>採った場所・日付・人の名前が分かるときは、忘れないうちにメモしておきましょう。虫と一緒にもらったラベルも残しておきます。</p>
-        <div class="lesson-actions"><a href="#tools">← 道具をそろえる手順に戻る</a><a class="next-step" href="#surface-drying">次へ：水気を取る</a></div>
+        {{ step-actions-home-preparation }}
       </section>
 
       <section class="lesson-chapter" id="surface-drying">
@@ -58,170 +58,200 @@
           </div>
           {{ media-surface-drying }}
         </div>
-        <div class="lesson-actions"><a href="#home-preparation">← 甲虫を用意する手順に戻る</a><a class="next-step" href="#make-it">次へ：足と触角を整える</a></div>
+        {{ step-actions-surface-drying }}
       </section>
 
-      <section class="lesson-chapter" id="make-it">
+      <section class="lesson-chapter" id="body-height">
+        <header class="chapter-heading" id="make-it">
+          {{ step-body-height }}
+          <h2>からだの高さを見よう</h2>
+        </header>
+        <div class="lesson-media-row">
+          <div class="lesson-copy">
+            <p>クワガタを横から見ると、からだに厚みがあります。この厚みを「体高（たいこう）」といいます。作業台に置いたとき、からだが高くて脚を整えにくい場合があります。</p>
+            <p>脚を整えにくいほどからだが高い場合は、押し付けて高さを合わせず、作業台にからだが収まるくぼみを用意します。</p>
+          </div>
+          {{ media-body-height }}
+        </div>
+        {{ step-actions-body-height }}
+      </section>
+
+      <section class="lesson-chapter" id="board-recess">
         <header class="chapter-heading">
-          {{ step-make-it }}
-          <h2>足と触角を整えよう</h2>
+          {{ step-board-recess }}
+          <h2>作業台にくぼみを作ろう</h2>
+        </header>
+        <div class="lesson-media-row recess-step">
+          <div class="lesson-copy">
+            <h3>位置に印を付ける</h3>
+            <p>クワガタを作業台に仮置きし、からだの下が入る範囲を見ます。写真のように、昆虫針でスタイロフォームに線を引いて、くぼみを作る位置の目安を付けます。</p>
+          </div>
+          {{ media-recess-mark }}
+        </div>
+        <div class="lesson-media-row recess-step">
+          <div class="lesson-copy">
+            <h3>くぼみを作る</h3>
+            <p>クワガタをいったん外し、印を付けた範囲をカッターで少しずつ削ります。くぼみができたら仮置きして、からだが安定し、脚を整えやすい高さか確かめます。</p>
+            <p class="workshop-note">会場ではスタッフが作業台を準備します。家で作る場合は、大人がカッターを扱います。</p>
+          </div>
+          {{ media-recess-made }}
+        </div>
+        {{ step-actions-board-recess }}
+      </section>
+
+      <section class="lesson-chapter" id="open-legs">
+        <header class="chapter-heading">
+          {{ step-open-legs }}
+          <h2>閉じた脚をひろげよう</h2>
+        </header>
+        <div class="lesson-media-row">
+          <div class="lesson-copy">
+            <p>このクワガタでは、くぼみに置く前に六本の脚を外へひろげました。閉じた脚がからだの下に残ると、置いたあとで動かしにくくなるためです。</p>
+            <p>写真のようにおなか側から脚の向きを見て、動かせる範囲で開きます。ここで脚の形を決める必要はありません。硬くて動かない脚は、<a href="softening.html#ready-check">軟化の状態</a>を確かめましょう。</p>
+          </div>
+          {{ media-legs-open }}
+        </div>
+        {{ step-actions-open-legs }}
+      </section>
+
+      <section class="lesson-chapter" id="place">
+        <header class="chapter-heading">
+          {{ step-place }}
+          <h2>くぼみに置こう</h2>
+        </header>
+        <div class="lesson-media-row">
+          <div class="lesson-copy">
+            <p>脚を開いたら、背中を上にして、からだをくぼみにそっと収めます。脚がからだの下に隠れず、作業台の上で動かせるか確かめましょう。</p>
+            <p>からだが落ち着いたら、どちらを向くと見やすいか考えながら、次の固定へ進みます。</p>
+          </div>
+          {{ media-body-in-recess }}
+        </div>
+        {{ step-actions-place }}
+      </section>
+
+      <section class="lesson-chapter" id="fix">
+        <header class="chapter-heading">
+          {{ step-fix }}
+          <h2>からだと大顎を固定しよう</h2>
+        </header>
+        <p>昆虫針は作業台に立て、甲虫には刺しません。</p>
+        <div class="lesson-media-row">
+          <div class="lesson-copy">
+            <h3>まず、からだを固定する</h3>
+            <p>固定用バンドをからだにかけ、両端を作業台の針で留めます。脚をバンドの下に挟まず、からだがずれない程度に固定します。</p>
+          </div>
+          {{ media-fixation }}
+        </div>
+        <div class="lesson-media-row">
+          <div class="lesson-copy">
+            <h3>次に、大顎の向きを整える</h3>
+            <p>からだが安定してから、大顎（おおあご）の向きを見ます。この例では、からだの向きに対して大顎がまっすぐになるように、まわりの針で支えています。針先で大顎を押し曲げることはしません。</p>
+            <p class="workshop-note">会場では、バンドと針の置き方をスタッフと確認してから始めます。</p>
+          </div>
+          {{ media-jaw-fixation }}
+        </div>
+        {{ step-actions-fix }}
+      </section>
+
+      <section class="lesson-chapter" id="legs">
+        <header class="chapter-heading">
+          {{ step-legs }}
+          <h2>脚の位置を整えよう</h2>
         </header>
         <p>足の位置を整えることを「展足（てんそく）」といいます。どんな姿にしたいか考えながら、少しずつ整えましょう。</p>
-        <p class="section-context">道具と甲虫の準備ができ、表面の水気が取れたら始めます。ここから読み始めた人は、<a href="#tools">道具</a>・<a href="#home-preparation">甲虫の準備</a>・<a href="#surface-drying">水気取り</a>を確認してください。</p>
-        <div class="lesson-tasks">
-          <section class="lesson-task" id="body-height">
-            <h3>からだの高さを見よう</h3>
-            <div class="lesson-media-row">
-              <div class="lesson-copy">
-                <p>クワガタを横から見ると、からだに厚みがあります。この厚みを「体高（たいこう）」といいます。作業台に置いたとき、からだが高くて脚を整えにくい場合があります。</p>
-                <p>脚を整えにくいほどからだが高い場合は、押し付けて高さを合わせず、作業台にからだが収まるくぼみを用意します。</p>
-              </div>
-              {{ media-body-height }}
-            </div>
-          </section>
-          <section class="lesson-task" id="board-recess">
-            <h3>作業台にくぼみを作ろう</h3>
-            <div class="lesson-media-row recess-step">
-              <div class="lesson-copy">
-                <p class="step-label">1</p>
-                <h4>位置に印を付ける</h4>
-                <p>クワガタを作業台に仮置きし、からだの下が入る範囲を見ます。写真のように、昆虫針でスタイロフォームに線を引いて、くぼみを作る位置の目安を付けます。</p>
-              </div>
-              {{ media-recess-mark }}
-            </div>
-            <div class="lesson-media-row recess-step">
-              <div class="lesson-copy">
-                <p class="step-label">2</p>
-                <h4>くぼみを作る</h4>
-                <p>クワガタをいったん外し、印を付けた範囲をカッターで少しずつ削ります。くぼみができたら仮置きして、からだが安定し、脚を整えやすい高さか確かめます。</p>
-                <p class="workshop-note">会場ではスタッフが作業台を準備します。家で作る場合は、大人がカッターを扱います。</p>
-              </div>
-              {{ media-recess-made }}
-            </div>
-          </section>
-          <section class="lesson-task" id="open-legs">
-            <h3>閉じた脚をひろげよう</h3>
-            <div class="lesson-media-row">
-              <div class="lesson-copy">
-                <p>このクワガタでは、くぼみに置く前に六本の脚を外へひろげました。閉じた脚がからだの下に残ると、置いたあとで動かしにくくなるためです。</p>
-                <p>写真のようにおなか側から脚の向きを見て、動かせる範囲で開きます。ここで脚の形を決める必要はありません。硬くて動かない脚は、<a href="softening.html#ready-check">軟化の状態</a>を確かめましょう。</p>
-              </div>
-              {{ media-legs-open }}
-            </div>
-          </section>
-          <section class="lesson-task" id="place">
-            <h3>くぼみに置こう</h3>
-            <div class="lesson-media-row">
-              <div class="lesson-copy">
-                <p>脚を開いたら、背中を上にして、からだをくぼみにそっと収めます。脚がからだの下に隠れず、作業台の上で動かせるか確かめましょう。</p>
-                <p>からだが落ち着いたら、どちらを向くと見やすいか考えながら、次の固定へ進みます。</p>
-              </div>
-              {{ media-body-in-recess }}
-            </div>
-          </section>
-          <section class="lesson-task" id="fix">
-            <h3>からだと大顎を固定しよう</h3>
-            <p>昆虫針は作業台に立て、甲虫には刺しません。</p>
-            <div class="lesson-media-row">
-              <div class="lesson-copy">
-                <p class="step-label">1</p>
-                <h4>まず、からだを固定する</h4>
-                <p>固定用バンドをからだにかけ、両端を作業台の針で留めます。脚をバンドの下に挟まず、からだがずれない程度に固定します。</p>
-              </div>
-              {{ media-fixation }}
-            </div>
-            <div class="lesson-media-row">
-              <div class="lesson-copy">
-                <p class="step-label">2</p>
-                <h4>次に、大顎の向きを整える</h4>
-                <p>からだが安定してから、大顎（おおあご）の向きを見ます。この例では、からだの向きに対して大顎がまっすぐになるように、まわりの針で支えています。針先で大顎を押し曲げることはしません。</p>
-                <p class="workshop-note">会場では、バンドと針の置き方をスタッフと確認してから始めます。</p>
-              </div>
-              {{ media-jaw-fixation }}
-            </div>
-          </section>
-          <section class="lesson-task" id="legs">
-            <h3>脚の位置を整えよう</h3>
-            <div class="lesson-media-row">
-              <div class="lesson-copy">
-                <p>まず、脚の太い部分の腿節（たいせつ）と、その先の脛節（けいせつ）の向きを整えます。六本の脚が重ならず、形が見える位置を考えましょう。</p>
-                <p>この作例では左前脚から始め、時計回りか反時計回りに順番に整えています。始める脚や回る向きは自由です。</p>
-              </div>
-              {{ media-legs }}
-            </div>
-            <div class="lesson-media-row">
-              <div class="lesson-copy">
-                <h4>関節の近くを見てみよう</h4>
-                <p>拡大写真では、脚と、脚の位置を支える作業台の針が見えます。ピンセットで脚先を引っ張らず、動かしたい関節に近い部分をそっと支えます。針は甲虫に刺さず、作業台に立てます。</p>
-                <p>からだまで動いたり、脚がしなるのに関節が動かなかったりするときは、力を加えるのを止めて、<a href="softening.html#ready-check">軟化の状態を確かめます。</a></p>
-              </div>
-              {{ media-legs-closeup }}
-            </div>
-          </section>
-          <section class="lesson-task" id="tarsi">
-            <h3>跗節を整えよう</h3>
-            <div class="lesson-media-row">
-              <div class="lesson-copy">
-                <p>腿節と脛節の向きが決まったら、脚の先にある跗節（ふせつ）を整えます。跗節は脛節の先から爪までの間にある、細かく分かれた部分です。</p>
-                <p>この作例では後脚の跗節から始めています。跗節を整える順番も自由です。一本ずつ脚先の向きを見て、触角との重なりも確かめながら、作業台に立てた針で位置を保ちます。</p>
-              </div>
-              {{ media-tarsi }}
-            </div>
-            <div class="lesson-media-row">
-              <div class="lesson-copy">
-                <h4>後脚の跗節を近くで見る</h4>
-                <p>拡大写真では、後脚の細かな跗節と爪が見えます。爪を引っ張って形を変えるのではなく、跗節の向きを少しずつ整えます。</p>
-              </div>
-              {{ media-tarsi-closeup }}
-            </div>
-          </section>
-          <section class="lesson-task" id="antennae">
-            <h3>跗節と触角を一緒に見よう</h3>
-            <div class="lesson-media-row">
-              <div class="lesson-copy">
-                <h4>横から高さを見る</h4>
-                <p>跗節を整えながら、触角の向きも見ます。脚先の跗節がほかの脚や触角と重なりそうなところは、上からだけでなく横からも見てみましょう。高さが違うと、見え方も変わります。</p>
-                <p>触角は付け根に近い部分をそっと支えて動かします。先端を引っ張ったり、細かな節をまっすぐに引き伸ばしたりしません。</p>
-              </div>
-              {{ media-antennae }}
-            </div>
-            <div class="lesson-media-row">
-              <div class="lesson-copy">
-                <h4>上から全体を見る</h4>
-                <p>横から見たら、もう一度上からも見ます。脚先と触角が隠れていないかを確かめ、気になるところを少しずつ調整しましょう。</p>
-              </div>
-              {{ media-antennae-overview }}
-            </div>
-          </section>
-          <section class="lesson-task" id="finish">
-            <h3>ぐるっと見てみよう</h3>
-            <p>脚、跗節、触角を整えたら、甲虫を前・横・後ろから見ます。見る向きを変えると、上からは気づかなかった重なりも見えてきます。</p>
-            <div class="lesson-media-row">
-              <div class="lesson-copy">
-                <h4>前から</h4>
-                <p>大顎と前脚の向きを見ます。</p>
-              </div>
-              {{ media-finish-front }}
-            </div>
-            <div class="lesson-media-row">
-              <div class="lesson-copy">
-                <h4>横から</h4>
-                <p>脚先と触角の高さや、重なり方を見ます。</p>
-              </div>
-              {{ media-finish-side }}
-            </div>
-            <div class="lesson-media-row">
-              <div class="lesson-copy">
-                <h4>後ろから</h4>
-                <p>後脚の跗節がほかの脚に隠れていないか見ます。</p>
-              </div>
-              {{ media-finish-rear }}
-            </div>
-            <p>気になるところは少し整えて、よければ乾燥へ進みます。きれいに仕上げるには慣れが必要です。最初は一体を最後まで作ることを目標にしても大丈夫です。</p>
-            <p><a href="intermediate.html#make-it">配置や見せ方を、もっとくわしく →</a></p>
-          </section>
+        <div class="lesson-media-row">
+          <div class="lesson-copy">
+            <p>まず、脚の太い部分の腿節（たいせつ）と、その先の脛節（けいせつ）の向きを整えます。六本の脚が重ならず、形が見える位置を考えましょう。</p>
+            <p>この作例では左前脚から始め、時計回りか反時計回りに順番に整えています。始める脚や回る向きは自由です。</p>
+          </div>
+          {{ media-legs }}
         </div>
-        <div class="lesson-actions"><a href="#surface-drying">← 水気を取る手順に戻る</a><a class="next-step" href="#dry">次へ：乾かして保管する</a></div>
+        <div class="lesson-media-row">
+          <div class="lesson-copy">
+            <h3>関節の近くを見てみよう</h3>
+            <p>拡大写真では、脚と、脚の位置を支える作業台の針が見えます。ピンセットで脚先を引っ張らず、動かしたい関節に近い部分をそっと支えます。針は甲虫に刺さず、作業台に立てます。</p>
+            <p>からだまで動いたり、脚がしなるのに関節が動かなかったりするときは、力を加えるのを止めて、<a href="softening.html#ready-check">軟化の状態を確かめます。</a></p>
+          </div>
+          {{ media-legs-closeup }}
+        </div>
+        {{ step-actions-legs }}
+      </section>
+
+      <section class="lesson-chapter" id="tarsi">
+        <header class="chapter-heading">
+          {{ step-tarsi }}
+          <h2>跗節を整えよう</h2>
+        </header>
+        <div class="lesson-media-row">
+          <div class="lesson-copy">
+            <p>腿節と脛節の向きが決まったら、脚の先にある跗節（ふせつ）を整えます。跗節は脛節の先から爪までの間にある、細かく分かれた部分です。</p>
+            <p>この作例では後脚の跗節から始めています。跗節を整える順番も自由です。一本ずつ脚先の向きを見て、触角との重なりも確かめながら、作業台に立てた針で位置を保ちます。</p>
+          </div>
+          {{ media-tarsi }}
+        </div>
+        <div class="lesson-media-row">
+          <div class="lesson-copy">
+            <h3>後脚の跗節を近くで見る</h3>
+            <p>拡大写真では、後脚の細かな跗節と爪が見えます。爪を引っ張って形を変えるのではなく、跗節の向きを少しずつ整えます。</p>
+          </div>
+          {{ media-tarsi-closeup }}
+        </div>
+        {{ step-actions-tarsi }}
+      </section>
+
+      <section class="lesson-chapter" id="antennae">
+        <header class="chapter-heading">
+          {{ step-antennae }}
+          <h2>跗節と触角を一緒に見よう</h2>
+        </header>
+        <div class="lesson-media-row">
+          <div class="lesson-copy">
+            <h3>横から高さを見る</h3>
+            <p>跗節を整えながら、触角の向きも見ます。脚先の跗節がほかの脚や触角と重なりそうなところは、上からだけでなく横からも見てみましょう。高さが違うと、見え方も変わります。</p>
+            <p>触角は付け根に近い部分をそっと支えて動かします。先端を引っ張ったり、細かな節をまっすぐに引き伸ばしたりしません。</p>
+          </div>
+          {{ media-antennae }}
+        </div>
+        <div class="lesson-media-row">
+          <div class="lesson-copy">
+            <h3>上から全体を見る</h3>
+            <p>横から見たら、もう一度上からも見ます。脚先と触角が隠れていないかを確かめ、気になるところを少しずつ調整しましょう。</p>
+          </div>
+          {{ media-antennae-overview }}
+        </div>
+        {{ step-actions-antennae }}
+      </section>
+
+      <section class="lesson-chapter" id="finish">
+        <header class="chapter-heading">
+          {{ step-finish }}
+          <h2>ぐるっと見てみよう</h2>
+        </header>
+        <p>脚、跗節、触角を整えたら、甲虫を前・横・後ろから見ます。見る向きを変えると、上からは気づかなかった重なりも見えてきます。</p>
+        <div class="lesson-media-row">
+          <div class="lesson-copy">
+            <h3>前から</h3>
+            <p>大顎と前脚の向きを見ます。</p>
+          </div>
+          {{ media-finish-front }}
+        </div>
+        <div class="lesson-media-row">
+          <div class="lesson-copy">
+            <h3>横から</h3>
+            <p>脚先と触角の高さや、重なり方を見ます。</p>
+          </div>
+          {{ media-finish-side }}
+        </div>
+        <div class="lesson-media-row">
+          <div class="lesson-copy">
+            <h3>後ろから</h3>
+            <p>後脚の跗節がほかの脚に隠れていないか見ます。</p>
+          </div>
+          {{ media-finish-rear }}
+        </div>
+        <p>気になるところは少し整えて、よければ乾燥へ進みます。きれいに仕上げるには慣れが必要です。最初は一体を最後まで作ることを目標にしても大丈夫です。</p>
+        <p><a href="intermediate.html#make-it">配置や見せ方を、もっとくわしく →</a></p>
+        {{ step-actions-finish }}
       </section>
 
       <section class="lesson-chapter" id="dry">
@@ -253,7 +283,7 @@
           <p>まだ関節を動かせる状態なら、直せる場合があります。硬くなっていたら、力で動かさず、必要に応じてもう一度軟化します。作ってからの日数だけでは判断できません。</p>
           <p><a href="softening.html#ready-check">動かせる状態の確認方法 →</a></p>
         </details>
-        <div class="lesson-actions"><a href="#make-it">← 足と触角を整える手順に戻る</a><a class="next-step" href="#label">次へ：ラベルを添える</a></div>
+        {{ step-actions-dry }}
       </section>
 
       <section class="lesson-chapter" id="label">
@@ -272,7 +302,7 @@
         <p>ラベルはケースの中で、どの標本のものか分かる位置に置きます。複数の標本を入れるときは、標本ごとに区画を分けるなどして、ラベルと取り違えないようにしましょう。</p>
         <p>記録がない標本でも姿や形は楽しめますが、採った場所や日付は、標本だけでは分かりません。</p>
         <p><a href="adults.html#label">記録が資料として役立つ理由を読む →</a></p>
-        <div class="lesson-actions"><a href="#dry">← 乾燥・保管の手順に戻る</a><a class="next-step" href="#enjoy">次へ：作った標本を楽しむ</a></div>
+        {{ step-actions-label }}
       </section>
 
       <section class="lesson-reading" id="enjoy">
