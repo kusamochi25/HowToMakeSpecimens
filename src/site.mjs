@@ -47,7 +47,7 @@ export const intermediateTopics = [
 
 export const adultTopics = [
   { id: 'roles', label: '標本の楽しみ方と役割' },
-  { id: 'home-preparation', label: '制作工程の意味' },
+  { id: 'home-preparation', label: '制作工程の説明' },
   { id: 'finish', label: '仕上がりと価値' },
   { id: 'label', label: 'ラベルと記録' },
   { id: 'answering', label: '子どもの疑問に付き合う' },
