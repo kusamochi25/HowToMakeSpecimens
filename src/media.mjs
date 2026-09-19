@@ -5,7 +5,7 @@ export const media = {
   'card-beginner': { src: 'images/guides/beginner/tools.webp', label: '道具の写真', alt: '標本制作に使う道具', width: 1200, height: 1200 },
   'card-intermediate': { src: 'images/home/card-intermediate.webp', label: '甲虫の写真', alt: '形や色の異なる四体の甲虫標本を並べた写真', width: 1600, height: 1200 },
   'card-adults': { src: 'images/home/card-adults.webp', label: '標本とラベル', alt: 'クワガタの標本と、種名・採集地・採集時期を書いたラベル', width: 1200, height: 900, position: '50% 25%' },
-  'card-home': { src: null, label: '軟化の写真', alt: '家庭で甲虫を軟化するための道具と配置', width: 800, height: 450 },
+  'card-home': { src: 'images/home/card-home.webp', label: '軟化の写真', alt: '水に浸して軟化させる甲虫', width: 1200, height: 1200 },
   tools: { src: 'images/guides/beginner/tools.webp', label: '使う道具の写真', alt: 'スタイロフォームの作業台など、今回使う七つの道具', width: 1200, height: 1200 },
   'surface-drying': { src: 'images/guides/beginner/surface-drying.webp', label: '軟化後の水気を取る写真', alt: '吸水用の紙の上に置いた軟化後の甲虫', width: 1200, height: 1200 },
   'body-height': { src: 'images/guides/beginner/body-height.webp', label: 'クワガタの体高の写真', alt: '横から見たクワガタのからだの厚みと脚', width: 1200, height: 1200 },
