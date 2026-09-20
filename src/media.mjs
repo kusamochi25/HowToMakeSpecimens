@@ -25,7 +25,7 @@ export const media = {
   'finish-side': { src: 'images/guides/beginner/finish-side.webp', label: '仕上げを横から見る写真', alt: '作業台に固定中のクワガタの大顎と前脚を横から見た写真', width: 1200, height: 1200, caption: '横から見た大顎と脚先' },
   'finish-rear': { src: 'images/guides/beginner/finish-rear.webp', label: '仕上げを後ろから見る写真', alt: '作業台に固定中のクワガタの後脚と跗節を後ろから見た写真', width: 1200, height: 1200, caption: '後ろから見た後脚と跗節' },
   drying: { src: 'images/guides/beginner/drying.webp', label: '乾燥中のケースの写真', alt: '針とバンドで固定したクワガタをスタイロフォームの作業台ごと透明ケースに入れ、ふたを開けて乾かしている状態', width: 1200, height: 1200, caption: '固定したままケースへ。ふたを開けて乾かす' },
-  label: { src: null, label: 'ラベルの写真', alt: '採集と制作の情報を区別したラベルと標本の対応', width: 1000, height: 650 },
+  label: { src: 'images/guides/beginner/label.webp', label: 'ラベルの写真', alt: '甲虫標本と、そのそばに添えた採集情報のラベル', width: 1200, height: 1200 },
   'softening-paper': { src: null, label: '湿度容器の配置写真', alt: '湿った紙と乾いた小皿を隔てて甲虫を置いた容器', width: 1000, height: 650 },
   'softening-water': { src: null, label: 'お湯から取り出す手元写真', alt: '甲虫の体を下からすくって取り出す様子', width: 1000, height: 650 },
   comparison: { src: 'images/guides/intermediate/comparison.webp', label: '配置を見比べる写真', alt: '昆虫標本の配置を見比べるための写真', width: 3781, height: 2836 }
